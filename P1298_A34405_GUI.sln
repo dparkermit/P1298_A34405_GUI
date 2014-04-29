@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Basic Express 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "P1298_A34405_GUI", "P1298_A34405_GUI\P1298_A34405_GUI.vbproj", "{BE51B197-12A5-4A60-9D47-7F88523D5E2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE51B197-12A5-4A60-9D47-7F88523D5E2A}.Debug|x86.ActiveCfg = Debug|x86
+		{BE51B197-12A5-4A60-9D47-7F88523D5E2A}.Debug|x86.Build.0 = Debug|x86
+		{BE51B197-12A5-4A60-9D47-7F88523D5E2A}.Release|x86.ActiveCfg = Release|x86
+		{BE51B197-12A5-4A60-9D47-7F88523D5E2A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
