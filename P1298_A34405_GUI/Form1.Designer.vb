@@ -45,6 +45,16 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.LabelPosition = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.LabelIA = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.LabelADCBUF1 = New System.Windows.Forms.Label()
+        Me.LabelADCBUF0 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.LabelParameter = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.LabelIB = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'ButtonSetBaudRate
@@ -226,11 +236,116 @@ Partial Class Form1
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(646, 58)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(20, 13)
+        Me.Label3.TabIndex = 891
+        Me.Label3.Text = "I A"
+        '
+        'LabelIA
+        '
+        Me.LabelIA.AutoSize = True
+        Me.LabelIA.Location = New System.Drawing.Point(727, 58)
+        Me.LabelIA.Name = "LabelIA"
+        Me.LabelIA.Size = New System.Drawing.Size(20, 13)
+        Me.LabelIA.TabIndex = 890
+        Me.LabelIA.Text = "I A"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(646, 45)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(56, 13)
+        Me.Label5.TabIndex = 889
+        Me.Label5.Text = "ADCBUF1"
+        '
+        'LabelADCBUF1
+        '
+        Me.LabelADCBUF1.AutoSize = True
+        Me.LabelADCBUF1.Location = New System.Drawing.Point(727, 45)
+        Me.LabelADCBUF1.Name = "LabelADCBUF1"
+        Me.LabelADCBUF1.Size = New System.Drawing.Size(56, 13)
+        Me.LabelADCBUF1.TabIndex = 888
+        Me.LabelADCBUF1.Text = "ADCBUF1"
+        '
+        'LabelADCBUF0
+        '
+        Me.LabelADCBUF0.AutoSize = True
+        Me.LabelADCBUF0.Location = New System.Drawing.Point(727, 32)
+        Me.LabelADCBUF0.Name = "LabelADCBUF0"
+        Me.LabelADCBUF0.Size = New System.Drawing.Size(55, 13)
+        Me.LabelADCBUF0.TabIndex = 887
+        Me.LabelADCBUF0.Text = "ABCBUF0"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(646, 32)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(56, 13)
+        Me.Label8.TabIndex = 886
+        Me.Label8.Text = "ADCBUF0"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label9.Location = New System.Drawing.Point(646, 84)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(55, 13)
+        Me.Label9.TabIndex = 895
+        Me.Label9.Text = "Parameter"
+        '
+        'LabelParameter
+        '
+        Me.LabelParameter.AutoSize = True
+        Me.LabelParameter.Location = New System.Drawing.Point(727, 84)
+        Me.LabelParameter.Name = "LabelParameter"
+        Me.LabelParameter.Size = New System.Drawing.Size(55, 13)
+        Me.LabelParameter.TabIndex = 894
+        Me.LabelParameter.Text = "Parameter"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(646, 71)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(20, 13)
+        Me.Label11.TabIndex = 893
+        Me.Label11.Text = "I B"
+        '
+        'LabelIB
+        '
+        Me.LabelIB.AutoSize = True
+        Me.LabelIB.Location = New System.Drawing.Point(727, 71)
+        Me.LabelIB.Name = "LabelIB"
+        Me.LabelIB.Size = New System.Drawing.Size(20, 13)
+        Me.LabelIB.TabIndex = 892
+        Me.LabelIB.Text = "I B"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 530)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.LabelParameter)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.LabelIB)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.LabelIA)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.LabelADCBUF1)
+        Me.Controls.Add(Me.LabelADCBUF0)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.LabelPosition)
         Me.Controls.Add(Me.Label2)
@@ -279,4 +394,14 @@ Partial Class Form1
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents LabelPosition As System.Windows.Forms.Label
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents LabelIA As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents LabelADCBUF1 As System.Windows.Forms.Label
+    Friend WithEvents LabelADCBUF0 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents LabelParameter As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents LabelIB As System.Windows.Forms.Label
 End Class

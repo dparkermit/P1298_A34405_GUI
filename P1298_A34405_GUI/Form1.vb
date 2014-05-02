@@ -32,8 +32,9 @@ Public Class Form1
     Public Const CMD_MOVE_COUNTER_CLOCKWISE As Byte = &H34
     Public Const CMD_READ_EEPROM_REGISTER As Byte = &H40
     Public Const CMD_WRITE_EEPROM_REGISTER As Byte = &H42
-
-
+    Public Const CMD_OVERCURRENT_SHUTDOWN_TEST As Byte = &HE0
+    Public Const CMD_READ_AFC_ERROR_DATA_HISTORY As Byte = &H50
+    Public Const CMD_READ_MEM_LOCATION As Byte = &H54
 
 
 
@@ -43,7 +44,20 @@ Public Class Form1
     Public Const RAM_READ_VERSION As Byte = &H2
 
     Public Const RAM_READ_CURRENT_POSITION As Byte = &H10
-    Public Const RAM_READ_TARGET_POSITION As Byte = &H20
+    Public Const RAM_READ_TARGET_POSITION As Byte = &H12
+    Public Const RAM_READ_HOME_POSITION As Byte = &H14
+    Public ConstRAM_READ_MAX_POSITION As Byte = &H16
+    Public Const RAM_READ_MIN_POSITION As Byte = &H18
+
+    Public Const RAM_READ_ADCBUF0 As Byte = &H30
+    Public Const RAM_READ_ADCBUF1 As Byte = &H31
+    Public Const RAM_READ_ADC_MOTOR_CURRENT_A As Byte = &H32
+    Public Const RAM_READ_ADC_MOTOR_CURRENT_B As Byte = &H33
+    Public Const RAM_READ_ADC_PARAMETER_INPUT As Byte = &H3B
+
+    Public Const RAM_READ_SIGMA_DATA As Byte = &H40
+    Public Const RAM_READ_DELTA_DATA As Byte = &H41
+    Public Const RAM_READ_FREQUENCY_ERROR_FILTERED As Byte = &H42
 
 
 
@@ -235,13 +249,9 @@ Public Class Form1
             ElseIf ReturnData = &H40 Then
                 LabelState.Text = "AFC - Not Pulsing"
             ElseIf ReturnData = &H44 Then
-                LabelState.Text = "AFC - Start Up"
-            ElseIf ReturnData = &H48 Then
-                LabelState.Text = "AFC - Steady State"
+                LabelState.Text = "AFC - Pulsing"
             ElseIf ReturnData = &H50 Then
                 LabelState.Text = "Manual Mode"
-            ElseIf ReturnData = &H60 Then
-                LabelState.Text = "Serial Control Mode"
             ElseIf ReturnData = &HF0 Then
                 LabelState.Text = "Fault"
             End If
@@ -275,6 +285,45 @@ Public Class Form1
             Exit Sub
         End If
 
+        ' Read ADCBUF0
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ADCBUF0, 0, 0) = True Then
+            LabelADCBUF0.Text = ReturnData
+        Else
+            LabelADCBUF0.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read ADCBUF1
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ADCBUF1, 0, 0) = True Then
+            LabelADCBUF1.Text = ReturnData
+        Else
+            LabelADCBUF1.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Motor Current A
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ADC_MOTOR_CURRENT_A, 0, 0) = True Then
+            LabelIA.Text = ReturnData
+        Else
+            LabelIA.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Motor Current B
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ADC_MOTOR_CURRENT_B, 0, 0) = True Then
+            LabelIB.Text = ReturnData
+        Else
+            LabelIB.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read PARAMETER INPUT
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ADC_PARAMETER_INPUT, 0, 0) = True Then
+            LabelParameter.Text = ReturnData
+        Else
+            LabelParameter.Text = "error"
+            Exit Sub
+        End If
 
 
     End Sub
@@ -404,4 +453,6 @@ Public Class Form1
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         ReadAllFromRam()
     End Sub
+
+
 End Class
