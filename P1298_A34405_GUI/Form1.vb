@@ -58,7 +58,9 @@ Public Class Form1
     Public Const RAM_READ_SIGMA_DATA As Byte = &H40
     Public Const RAM_READ_DELTA_DATA As Byte = &H41
     Public Const RAM_READ_FREQUENCY_ERROR_FILTERED As Byte = &H42
+    Public Const RAM_READ_FREQUENCY_ERROR_OFFSET As Byte = &H43
 
+    Public ConstRAM_READ_PRF As Byte = &H50
 
 
 
@@ -325,6 +327,44 @@ Public Class Form1
             Exit Sub
         End If
 
+        ' Read Sigma Data
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_SIGMA_DATA, 0, 0) = True Then
+            LabelSigma.Text = ReturnData
+        Else
+            LabelSigma.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Delta Data
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_DELTA_DATA, 0, 0) = True Then
+            LabelDelta.Text = ReturnData
+        Else
+            LabelDelta.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Error Data
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_FREQUENCY_ERROR_FILTERED, 0, 0) = True Then
+            LabelError.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelError.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Error Offset
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_FREQUENCY_ERROR_OFFSET, 0, 0) = True Then
+            LabelErrorOffset.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelErrorOffset.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, ConstRAM_READ_PRF, 0, 0) = True Then
+            LabelPRF.Text = ReturnData
+        Else
+            LabelPRF.Text = "error"
+            Exit Sub
+        End If
 
     End Sub
 
@@ -454,5 +494,139 @@ Public Class Form1
         ReadAllFromRam()
     End Sub
 
+    Private Function ConvertToSigned(ByVal value_unsigned As UInt16) As Int16
+        Dim ReturnDataSigned As Int16
+        ReturnDataSigned = 0
+        Try
+            If value_unsigned <= 32767 Then
+                ReturnDataSigned = value_unsigned
+            Else
+                ReturnDataSigned = value_unsigned - 65536
+            End If
 
+        Catch ex As Exception
+
+        End Try
+ 
+
+
+        Return ReturnDataSigned
+    End Function
+
+    Private Sub ButtonReadErrorHistory_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonReadErrorHistory.Click
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 0, 0, 0) = True Then
+            LabelD0.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD0.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 1, 0, 0) = True Then
+            LabelD1.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD1.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 2, 0, 0) = True Then
+            LabelD2.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD2.Text = "error"
+            Exit Sub
+        End If
+
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 3, 0, 0) = True Then
+            LabelD3.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD3.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 4, 0, 0) = True Then
+            LabelD4.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD4.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 5, 0, 0) = True Then
+            LabelD5.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD5.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 6, 0, 0) = True Then
+            LabelD6.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD6.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 7, 0, 0) = True Then
+            LabelD7.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD7.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 8, 0, 0) = True Then
+            LabelD8.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD8.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 9, 0, 0) = True Then
+            LabelD9.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD9.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 10, 0, 0) = True Then
+            LabelD10.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD10.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 11, 0, 0) = True Then
+            LabelD11.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD11.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 12, 0, 0) = True Then
+            LabelD12.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD12.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 13, 0, 0) = True Then
+            LabelD13.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD13.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 14, 0, 0) = True Then
+            LabelD14.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD14.Text = "error"
+            Exit Sub
+        End If
+
+        If SendAndValidateCommand(CMD_READ_AFC_ERROR_DATA_HISTORY, 15, 0, 0) = True Then
+            LabelD15.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelD15.Text = "error"
+            Exit Sub
+        End If
+
+
+    End Sub
 End Class

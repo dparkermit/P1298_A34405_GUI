@@ -55,6 +55,33 @@ Partial Class Form1
         Me.LabelParameter = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.LabelIB = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.LabelSigma = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.LabelDelta = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.LabelError = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.LabelErrorOffset = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.LabelPRF = New System.Windows.Forms.Label()
+        Me.ButtonReadErrorHistory = New System.Windows.Forms.Button()
+        Me.LabelD0 = New System.Windows.Forms.Label()
+        Me.LabelD1 = New System.Windows.Forms.Label()
+        Me.LabelD3 = New System.Windows.Forms.Label()
+        Me.LabelD2 = New System.Windows.Forms.Label()
+        Me.LabelD7 = New System.Windows.Forms.Label()
+        Me.LabelD6 = New System.Windows.Forms.Label()
+        Me.LabelD5 = New System.Windows.Forms.Label()
+        Me.LabelD4 = New System.Windows.Forms.Label()
+        Me.LabelD15 = New System.Windows.Forms.Label()
+        Me.LabelD14 = New System.Windows.Forms.Label()
+        Me.LabelD13 = New System.Windows.Forms.Label()
+        Me.LabelD12 = New System.Windows.Forms.Label()
+        Me.LabelD11 = New System.Windows.Forms.Label()
+        Me.LabelD10 = New System.Windows.Forms.Label()
+        Me.LabelD9 = New System.Windows.Forms.Label()
+        Me.LabelD8 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'ButtonSetBaudRate
@@ -331,11 +358,286 @@ Partial Class Form1
         Me.LabelIB.TabIndex = 892
         Me.LabelIB.Text = "I B"
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label4.Location = New System.Drawing.Point(647, 97)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(36, 13)
+        Me.Label4.TabIndex = 897
+        Me.Label4.Text = "Sigma"
+        '
+        'LabelSigma
+        '
+        Me.LabelSigma.AutoSize = True
+        Me.LabelSigma.Location = New System.Drawing.Point(728, 97)
+        Me.LabelSigma.Name = "LabelSigma"
+        Me.LabelSigma.Size = New System.Drawing.Size(36, 13)
+        Me.LabelSigma.TabIndex = 896
+        Me.LabelSigma.Text = "Sigma"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label6.Location = New System.Drawing.Point(647, 110)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(32, 13)
+        Me.Label6.TabIndex = 899
+        Me.Label6.Text = "Delta"
+        '
+        'LabelDelta
+        '
+        Me.LabelDelta.AutoSize = True
+        Me.LabelDelta.Location = New System.Drawing.Point(728, 110)
+        Me.LabelDelta.Name = "LabelDelta"
+        Me.LabelDelta.Size = New System.Drawing.Size(32, 13)
+        Me.LabelDelta.TabIndex = 898
+        Me.LabelDelta.Text = "Delta"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label10.Location = New System.Drawing.Point(647, 123)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(29, 13)
+        Me.Label10.TabIndex = 901
+        Me.Label10.Text = "Error"
+        '
+        'LabelError
+        '
+        Me.LabelError.AutoSize = True
+        Me.LabelError.Location = New System.Drawing.Point(728, 123)
+        Me.LabelError.Name = "LabelError"
+        Me.LabelError.Size = New System.Drawing.Size(29, 13)
+        Me.LabelError.TabIndex = 900
+        Me.LabelError.Text = "Error"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label7.Location = New System.Drawing.Point(647, 136)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(60, 13)
+        Me.Label7.TabIndex = 903
+        Me.Label7.Text = "Error Offset"
+        '
+        'LabelErrorOffset
+        '
+        Me.LabelErrorOffset.AutoSize = True
+        Me.LabelErrorOffset.Location = New System.Drawing.Point(728, 136)
+        Me.LabelErrorOffset.Name = "LabelErrorOffset"
+        Me.LabelErrorOffset.Size = New System.Drawing.Size(60, 13)
+        Me.LabelErrorOffset.TabIndex = 902
+        Me.LabelErrorOffset.Text = "Error Offset"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label12.Location = New System.Drawing.Point(647, 149)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(28, 13)
+        Me.Label12.TabIndex = 905
+        Me.Label12.Text = "PRF"
+        '
+        'LabelPRF
+        '
+        Me.LabelPRF.AutoSize = True
+        Me.LabelPRF.Location = New System.Drawing.Point(728, 149)
+        Me.LabelPRF.Name = "LabelPRF"
+        Me.LabelPRF.Size = New System.Drawing.Size(28, 13)
+        Me.LabelPRF.TabIndex = 904
+        Me.LabelPRF.Text = "PRF"
+        '
+        'ButtonReadErrorHistory
+        '
+        Me.ButtonReadErrorHistory.Location = New System.Drawing.Point(650, 311)
+        Me.ButtonReadErrorHistory.Name = "ButtonReadErrorHistory"
+        Me.ButtonReadErrorHistory.Size = New System.Drawing.Size(114, 23)
+        Me.ButtonReadErrorHistory.TabIndex = 906
+        Me.ButtonReadErrorHistory.Text = "Read Error History"
+        Me.ButtonReadErrorHistory.UseVisualStyleBackColor = True
+        '
+        'LabelD0
+        '
+        Me.LabelD0.AutoSize = True
+        Me.LabelD0.Location = New System.Drawing.Point(647, 184)
+        Me.LabelD0.Name = "LabelD0"
+        Me.LabelD0.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD0.TabIndex = 907
+        Me.LabelD0.Text = "History"
+        '
+        'LabelD1
+        '
+        Me.LabelD1.AutoSize = True
+        Me.LabelD1.Location = New System.Drawing.Point(647, 197)
+        Me.LabelD1.Name = "LabelD1"
+        Me.LabelD1.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD1.TabIndex = 908
+        Me.LabelD1.Text = "History"
+        '
+        'LabelD3
+        '
+        Me.LabelD3.AutoSize = True
+        Me.LabelD3.Location = New System.Drawing.Point(647, 223)
+        Me.LabelD3.Name = "LabelD3"
+        Me.LabelD3.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD3.TabIndex = 910
+        Me.LabelD3.Text = "History"
+        '
+        'LabelD2
+        '
+        Me.LabelD2.AutoSize = True
+        Me.LabelD2.Location = New System.Drawing.Point(647, 210)
+        Me.LabelD2.Name = "LabelD2"
+        Me.LabelD2.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD2.TabIndex = 909
+        Me.LabelD2.Text = "History"
+        '
+        'LabelD7
+        '
+        Me.LabelD7.AutoSize = True
+        Me.LabelD7.Location = New System.Drawing.Point(647, 275)
+        Me.LabelD7.Name = "LabelD7"
+        Me.LabelD7.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD7.TabIndex = 914
+        Me.LabelD7.Text = "History"
+        '
+        'LabelD6
+        '
+        Me.LabelD6.AutoSize = True
+        Me.LabelD6.Location = New System.Drawing.Point(647, 262)
+        Me.LabelD6.Name = "LabelD6"
+        Me.LabelD6.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD6.TabIndex = 913
+        Me.LabelD6.Text = "History"
+        '
+        'LabelD5
+        '
+        Me.LabelD5.AutoSize = True
+        Me.LabelD5.Location = New System.Drawing.Point(647, 249)
+        Me.LabelD5.Name = "LabelD5"
+        Me.LabelD5.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD5.TabIndex = 912
+        Me.LabelD5.Text = "History"
+        '
+        'LabelD4
+        '
+        Me.LabelD4.AutoSize = True
+        Me.LabelD4.Location = New System.Drawing.Point(647, 236)
+        Me.LabelD4.Name = "LabelD4"
+        Me.LabelD4.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD4.TabIndex = 911
+        Me.LabelD4.Text = "History"
+        '
+        'LabelD15
+        '
+        Me.LabelD15.AutoSize = True
+        Me.LabelD15.Location = New System.Drawing.Point(728, 275)
+        Me.LabelD15.Name = "LabelD15"
+        Me.LabelD15.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD15.TabIndex = 922
+        Me.LabelD15.Text = "History"
+        '
+        'LabelD14
+        '
+        Me.LabelD14.AutoSize = True
+        Me.LabelD14.Location = New System.Drawing.Point(728, 262)
+        Me.LabelD14.Name = "LabelD14"
+        Me.LabelD14.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD14.TabIndex = 921
+        Me.LabelD14.Text = "History"
+        '
+        'LabelD13
+        '
+        Me.LabelD13.AutoSize = True
+        Me.LabelD13.Location = New System.Drawing.Point(728, 249)
+        Me.LabelD13.Name = "LabelD13"
+        Me.LabelD13.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD13.TabIndex = 920
+        Me.LabelD13.Text = "History"
+        '
+        'LabelD12
+        '
+        Me.LabelD12.AutoSize = True
+        Me.LabelD12.Location = New System.Drawing.Point(728, 236)
+        Me.LabelD12.Name = "LabelD12"
+        Me.LabelD12.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD12.TabIndex = 919
+        Me.LabelD12.Text = "History"
+        '
+        'LabelD11
+        '
+        Me.LabelD11.AutoSize = True
+        Me.LabelD11.Location = New System.Drawing.Point(728, 223)
+        Me.LabelD11.Name = "LabelD11"
+        Me.LabelD11.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD11.TabIndex = 918
+        Me.LabelD11.Text = "History"
+        '
+        'LabelD10
+        '
+        Me.LabelD10.AutoSize = True
+        Me.LabelD10.Location = New System.Drawing.Point(728, 210)
+        Me.LabelD10.Name = "LabelD10"
+        Me.LabelD10.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD10.TabIndex = 917
+        Me.LabelD10.Text = "History"
+        '
+        'LabelD9
+        '
+        Me.LabelD9.AutoSize = True
+        Me.LabelD9.Location = New System.Drawing.Point(728, 197)
+        Me.LabelD9.Name = "LabelD9"
+        Me.LabelD9.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD9.TabIndex = 916
+        Me.LabelD9.Text = "History"
+        '
+        'LabelD8
+        '
+        Me.LabelD8.AutoSize = True
+        Me.LabelD8.Location = New System.Drawing.Point(728, 184)
+        Me.LabelD8.Name = "LabelD8"
+        Me.LabelD8.Size = New System.Drawing.Size(39, 13)
+        Me.LabelD8.TabIndex = 915
+        Me.LabelD8.Text = "History"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 530)
+        Me.Controls.Add(Me.LabelD15)
+        Me.Controls.Add(Me.LabelD14)
+        Me.Controls.Add(Me.LabelD13)
+        Me.Controls.Add(Me.LabelD12)
+        Me.Controls.Add(Me.LabelD11)
+        Me.Controls.Add(Me.LabelD10)
+        Me.Controls.Add(Me.LabelD9)
+        Me.Controls.Add(Me.LabelD8)
+        Me.Controls.Add(Me.LabelD7)
+        Me.Controls.Add(Me.LabelD6)
+        Me.Controls.Add(Me.LabelD5)
+        Me.Controls.Add(Me.LabelD4)
+        Me.Controls.Add(Me.LabelD3)
+        Me.Controls.Add(Me.LabelD2)
+        Me.Controls.Add(Me.LabelD1)
+        Me.Controls.Add(Me.LabelD0)
+        Me.Controls.Add(Me.ButtonReadErrorHistory)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.LabelPRF)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.LabelErrorOffset)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.LabelError)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.LabelDelta)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.LabelSigma)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.LabelParameter)
         Me.Controls.Add(Me.Label11)
@@ -404,4 +706,31 @@ Partial Class Form1
     Friend WithEvents LabelParameter As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents LabelIB As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents LabelSigma As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents LabelDelta As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents LabelError As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents LabelErrorOffset As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents LabelPRF As System.Windows.Forms.Label
+    Friend WithEvents ButtonReadErrorHistory As System.Windows.Forms.Button
+    Friend WithEvents LabelD0 As System.Windows.Forms.Label
+    Friend WithEvents LabelD1 As System.Windows.Forms.Label
+    Friend WithEvents LabelD3 As System.Windows.Forms.Label
+    Friend WithEvents LabelD2 As System.Windows.Forms.Label
+    Friend WithEvents LabelD7 As System.Windows.Forms.Label
+    Friend WithEvents LabelD6 As System.Windows.Forms.Label
+    Friend WithEvents LabelD5 As System.Windows.Forms.Label
+    Friend WithEvents LabelD4 As System.Windows.Forms.Label
+    Friend WithEvents LabelD15 As System.Windows.Forms.Label
+    Friend WithEvents LabelD14 As System.Windows.Forms.Label
+    Friend WithEvents LabelD13 As System.Windows.Forms.Label
+    Friend WithEvents LabelD12 As System.Windows.Forms.Label
+    Friend WithEvents LabelD11 As System.Windows.Forms.Label
+    Friend WithEvents LabelD10 As System.Windows.Forms.Label
+    Friend WithEvents LabelD9 As System.Windows.Forms.Label
+    Friend WithEvents LabelD8 As System.Windows.Forms.Label
 End Class
