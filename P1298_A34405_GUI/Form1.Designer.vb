@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class FormOverCurrentTest
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -39,7 +39,7 @@ Partial Class Form1
         Me.TextBoxClockWise = New System.Windows.Forms.TextBox()
         Me.ButtonClockWise = New System.Windows.Forms.Button()
         Me.TextBoxCounterClockwise = New System.Windows.Forms.TextBox()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.ButtonCounterClockwise = New System.Windows.Forms.Button()
         Me.LabelTarget = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -82,6 +82,28 @@ Partial Class Form1
         Me.LabelD10 = New System.Windows.Forms.Label()
         Me.LabelD9 = New System.Windows.Forms.Label()
         Me.LabelD8 = New System.Windows.Forms.Label()
+        Me.TextBoxErrorOffset = New System.Windows.Forms.TextBox()
+        Me.ButtonSetErrorOffset = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.LabelHome = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.LabelMax = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.LabelMin = New System.Windows.Forms.Label()
+        Me.ButtonStartLog = New System.Windows.Forms.Button()
+        Me.ButtonStopLog = New System.Windows.Forms.Button()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.TextBoxSetHomePosition = New System.Windows.Forms.TextBox()
+        Me.ButtonSetHomePosition = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.LabelOnPulses = New System.Windows.Forms.Label()
+        Me.ButtonAutoZero = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ButtonReadRamAddress = New System.Windows.Forms.Button()
+        Me.TextBoxRamAddress = New System.Windows.Forms.TextBox()
+        Me.LabelRamValue = New System.Windows.Forms.Label()
+        Me.LabelRamValueHex = New System.Windows.Forms.Label()
+        Me.LabelRamValueBinary = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'ButtonSetBaudRate
@@ -211,14 +233,14 @@ Partial Class Form1
         Me.TextBoxCounterClockwise.Size = New System.Drawing.Size(114, 20)
         Me.TextBoxCounterClockwise.TabIndex = 881
         '
-        'Button2
+        'ButtonCounterClockwise
         '
-        Me.Button2.Location = New System.Drawing.Point(156, 200)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(134, 23)
-        Me.Button2.TabIndex = 880
-        Me.Button2.Text = "Move Counter Clockwise"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.ButtonCounterClockwise.Location = New System.Drawing.Point(156, 200)
+        Me.ButtonCounterClockwise.Name = "ButtonCounterClockwise"
+        Me.ButtonCounterClockwise.Size = New System.Drawing.Size(134, 23)
+        Me.ButtonCounterClockwise.TabIndex = 880
+        Me.ButtonCounterClockwise.Text = "Move Counter Clockwise"
+        Me.ButtonCounterClockwise.UseVisualStyleBackColor = True
         '
         'LabelTarget
         '
@@ -243,7 +265,7 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(171, 81)
+        Me.Label1.Location = New System.Drawing.Point(171, 71)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(52, 13)
         Me.Label1.TabIndex = 885
@@ -252,7 +274,7 @@ Partial Class Form1
         'LabelPosition
         '
         Me.LabelPosition.AutoSize = True
-        Me.LabelPosition.Location = New System.Drawing.Point(222, 81)
+        Me.LabelPosition.Location = New System.Drawing.Point(222, 71)
         Me.LabelPosition.Name = "LabelPosition"
         Me.LabelPosition.Size = New System.Drawing.Size(44, 13)
         Me.LabelPosition.TabIndex = 884
@@ -260,14 +282,13 @@ Partial Class Form1
         '
         'Timer1
         '
-        Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 1000
+        Me.Timer1.Interval = 37
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(646, 58)
+        Me.Label3.Location = New System.Drawing.Point(647, 35)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(20, 13)
         Me.Label3.TabIndex = 891
@@ -276,7 +297,7 @@ Partial Class Form1
         'LabelIA
         '
         Me.LabelIA.AutoSize = True
-        Me.LabelIA.Location = New System.Drawing.Point(727, 58)
+        Me.LabelIA.Location = New System.Drawing.Point(728, 35)
         Me.LabelIA.Name = "LabelIA"
         Me.LabelIA.Size = New System.Drawing.Size(20, 13)
         Me.LabelIA.TabIndex = 890
@@ -286,7 +307,7 @@ Partial Class Form1
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(646, 45)
+        Me.Label5.Location = New System.Drawing.Point(647, 22)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(56, 13)
         Me.Label5.TabIndex = 889
@@ -295,7 +316,7 @@ Partial Class Form1
         'LabelADCBUF1
         '
         Me.LabelADCBUF1.AutoSize = True
-        Me.LabelADCBUF1.Location = New System.Drawing.Point(727, 45)
+        Me.LabelADCBUF1.Location = New System.Drawing.Point(728, 22)
         Me.LabelADCBUF1.Name = "LabelADCBUF1"
         Me.LabelADCBUF1.Size = New System.Drawing.Size(56, 13)
         Me.LabelADCBUF1.TabIndex = 888
@@ -304,7 +325,7 @@ Partial Class Form1
         'LabelADCBUF0
         '
         Me.LabelADCBUF0.AutoSize = True
-        Me.LabelADCBUF0.Location = New System.Drawing.Point(727, 32)
+        Me.LabelADCBUF0.Location = New System.Drawing.Point(728, 9)
         Me.LabelADCBUF0.Name = "LabelADCBUF0"
         Me.LabelADCBUF0.Size = New System.Drawing.Size(55, 13)
         Me.LabelADCBUF0.TabIndex = 887
@@ -314,7 +335,7 @@ Partial Class Form1
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(646, 32)
+        Me.Label8.Location = New System.Drawing.Point(647, 9)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(56, 13)
         Me.Label8.TabIndex = 886
@@ -324,7 +345,7 @@ Partial Class Form1
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label9.Location = New System.Drawing.Point(646, 84)
+        Me.Label9.Location = New System.Drawing.Point(647, 61)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(55, 13)
         Me.Label9.TabIndex = 895
@@ -333,7 +354,7 @@ Partial Class Form1
         'LabelParameter
         '
         Me.LabelParameter.AutoSize = True
-        Me.LabelParameter.Location = New System.Drawing.Point(727, 84)
+        Me.LabelParameter.Location = New System.Drawing.Point(728, 61)
         Me.LabelParameter.Name = "LabelParameter"
         Me.LabelParameter.Size = New System.Drawing.Size(55, 13)
         Me.LabelParameter.TabIndex = 894
@@ -343,7 +364,7 @@ Partial Class Form1
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(646, 71)
+        Me.Label11.Location = New System.Drawing.Point(647, 48)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(20, 13)
         Me.Label11.TabIndex = 893
@@ -352,7 +373,7 @@ Partial Class Form1
         'LabelIB
         '
         Me.LabelIB.AutoSize = True
-        Me.LabelIB.Location = New System.Drawing.Point(727, 71)
+        Me.LabelIB.Location = New System.Drawing.Point(728, 48)
         Me.LabelIB.Name = "LabelIB"
         Me.LabelIB.Size = New System.Drawing.Size(20, 13)
         Me.LabelIB.TabIndex = 892
@@ -362,7 +383,7 @@ Partial Class Form1
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label4.Location = New System.Drawing.Point(647, 97)
+        Me.Label4.Location = New System.Drawing.Point(648, 74)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(36, 13)
         Me.Label4.TabIndex = 897
@@ -371,7 +392,7 @@ Partial Class Form1
         'LabelSigma
         '
         Me.LabelSigma.AutoSize = True
-        Me.LabelSigma.Location = New System.Drawing.Point(728, 97)
+        Me.LabelSigma.Location = New System.Drawing.Point(729, 74)
         Me.LabelSigma.Name = "LabelSigma"
         Me.LabelSigma.Size = New System.Drawing.Size(36, 13)
         Me.LabelSigma.TabIndex = 896
@@ -381,7 +402,7 @@ Partial Class Form1
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label6.Location = New System.Drawing.Point(647, 110)
+        Me.Label6.Location = New System.Drawing.Point(648, 87)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(32, 13)
         Me.Label6.TabIndex = 899
@@ -390,7 +411,7 @@ Partial Class Form1
         'LabelDelta
         '
         Me.LabelDelta.AutoSize = True
-        Me.LabelDelta.Location = New System.Drawing.Point(728, 110)
+        Me.LabelDelta.Location = New System.Drawing.Point(729, 87)
         Me.LabelDelta.Name = "LabelDelta"
         Me.LabelDelta.Size = New System.Drawing.Size(32, 13)
         Me.LabelDelta.TabIndex = 898
@@ -400,7 +421,7 @@ Partial Class Form1
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label10.Location = New System.Drawing.Point(647, 123)
+        Me.Label10.Location = New System.Drawing.Point(648, 100)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(29, 13)
         Me.Label10.TabIndex = 901
@@ -409,7 +430,7 @@ Partial Class Form1
         'LabelError
         '
         Me.LabelError.AutoSize = True
-        Me.LabelError.Location = New System.Drawing.Point(728, 123)
+        Me.LabelError.Location = New System.Drawing.Point(729, 100)
         Me.LabelError.Name = "LabelError"
         Me.LabelError.Size = New System.Drawing.Size(29, 13)
         Me.LabelError.TabIndex = 900
@@ -419,7 +440,7 @@ Partial Class Form1
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label7.Location = New System.Drawing.Point(647, 136)
+        Me.Label7.Location = New System.Drawing.Point(648, 113)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(60, 13)
         Me.Label7.TabIndex = 903
@@ -428,7 +449,7 @@ Partial Class Form1
         'LabelErrorOffset
         '
         Me.LabelErrorOffset.AutoSize = True
-        Me.LabelErrorOffset.Location = New System.Drawing.Point(728, 136)
+        Me.LabelErrorOffset.Location = New System.Drawing.Point(729, 113)
         Me.LabelErrorOffset.Name = "LabelErrorOffset"
         Me.LabelErrorOffset.Size = New System.Drawing.Size(60, 13)
         Me.LabelErrorOffset.TabIndex = 902
@@ -438,7 +459,7 @@ Partial Class Form1
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label12.Location = New System.Drawing.Point(647, 149)
+        Me.Label12.Location = New System.Drawing.Point(648, 126)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(28, 13)
         Me.Label12.TabIndex = 905
@@ -447,7 +468,7 @@ Partial Class Form1
         'LabelPRF
         '
         Me.LabelPRF.AutoSize = True
-        Me.LabelPRF.Location = New System.Drawing.Point(728, 149)
+        Me.LabelPRF.Location = New System.Drawing.Point(729, 126)
         Me.LabelPRF.Name = "LabelPRF"
         Me.LabelPRF.Size = New System.Drawing.Size(28, 13)
         Me.LabelPRF.TabIndex = 904
@@ -606,11 +627,224 @@ Partial Class Form1
         Me.LabelD8.TabIndex = 915
         Me.LabelD8.Text = "History"
         '
-        'Form1
+        'TextBoxErrorOffset
+        '
+        Me.TextBoxErrorOffset.Location = New System.Drawing.Point(17, 384)
+        Me.TextBoxErrorOffset.Name = "TextBoxErrorOffset"
+        Me.TextBoxErrorOffset.Size = New System.Drawing.Size(114, 20)
+        Me.TextBoxErrorOffset.TabIndex = 924
+        '
+        'ButtonSetErrorOffset
+        '
+        Me.ButtonSetErrorOffset.Location = New System.Drawing.Point(156, 381)
+        Me.ButtonSetErrorOffset.Name = "ButtonSetErrorOffset"
+        Me.ButtonSetErrorOffset.Size = New System.Drawing.Size(134, 23)
+        Me.ButtonSetErrorOffset.TabIndex = 923
+        Me.ButtonSetErrorOffset.Text = "Set Offset"
+        Me.ButtonSetErrorOffset.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(171, 84)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(39, 13)
+        Me.Label13.TabIndex = 926
+        Me.Label13.Text = "Home"
+        '
+        'LabelHome
+        '
+        Me.LabelHome.AutoSize = True
+        Me.LabelHome.Location = New System.Drawing.Point(222, 84)
+        Me.LabelHome.Name = "LabelHome"
+        Me.LabelHome.Size = New System.Drawing.Size(35, 13)
+        Me.LabelHome.TabIndex = 925
+        Me.LabelHome.Text = "Home"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(171, 97)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(30, 13)
+        Me.Label14.TabIndex = 928
+        Me.Label14.Text = "Max"
+        '
+        'LabelMax
+        '
+        Me.LabelMax.AutoSize = True
+        Me.LabelMax.Location = New System.Drawing.Point(222, 97)
+        Me.LabelMax.Name = "LabelMax"
+        Me.LabelMax.Size = New System.Drawing.Size(27, 13)
+        Me.LabelMax.TabIndex = 927
+        Me.LabelMax.Text = "Max"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(171, 110)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(27, 13)
+        Me.Label16.TabIndex = 930
+        Me.Label16.Text = "Min"
+        '
+        'LabelMin
+        '
+        Me.LabelMin.AutoSize = True
+        Me.LabelMin.Location = New System.Drawing.Point(222, 110)
+        Me.LabelMin.Name = "LabelMin"
+        Me.LabelMin.Size = New System.Drawing.Size(24, 13)
+        Me.LabelMin.TabIndex = 929
+        Me.LabelMin.Text = "Min"
+        '
+        'ButtonStartLog
+        '
+        Me.ButtonStartLog.Location = New System.Drawing.Point(17, 275)
+        Me.ButtonStartLog.Name = "ButtonStartLog"
+        Me.ButtonStartLog.Size = New System.Drawing.Size(114, 23)
+        Me.ButtonStartLog.TabIndex = 931
+        Me.ButtonStartLog.Text = "Start Log"
+        Me.ButtonStartLog.UseVisualStyleBackColor = True
+        '
+        'ButtonStopLog
+        '
+        Me.ButtonStopLog.Location = New System.Drawing.Point(156, 275)
+        Me.ButtonStopLog.Name = "ButtonStopLog"
+        Me.ButtonStopLog.Size = New System.Drawing.Size(114, 23)
+        Me.ButtonStopLog.TabIndex = 932
+        Me.ButtonStopLog.Text = "Stop Log"
+        Me.ButtonStopLog.UseVisualStyleBackColor = True
+        '
+        'Timer2
+        '
+        Me.Timer2.Enabled = True
+        Me.Timer2.Interval = 1000
+        '
+        'TextBoxSetHomePosition
+        '
+        Me.TextBoxSetHomePosition.Location = New System.Drawing.Point(17, 229)
+        Me.TextBoxSetHomePosition.Name = "TextBoxSetHomePosition"
+        Me.TextBoxSetHomePosition.Size = New System.Drawing.Size(114, 20)
+        Me.TextBoxSetHomePosition.TabIndex = 934
+        '
+        'ButtonSetHomePosition
+        '
+        Me.ButtonSetHomePosition.Location = New System.Drawing.Point(156, 226)
+        Me.ButtonSetHomePosition.Name = "ButtonSetHomePosition"
+        Me.ButtonSetHomePosition.Size = New System.Drawing.Size(134, 23)
+        Me.ButtonSetHomePosition.TabIndex = 933
+        Me.ButtonSetHomePosition.Text = "Set Home Position"
+        Me.ButtonSetHomePosition.UseVisualStyleBackColor = True
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label15.Location = New System.Drawing.Point(648, 139)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(55, 13)
+        Me.Label15.TabIndex = 936
+        Me.Label15.Text = "On Pulses"
+        '
+        'LabelOnPulses
+        '
+        Me.LabelOnPulses.AutoSize = True
+        Me.LabelOnPulses.Location = New System.Drawing.Point(729, 139)
+        Me.LabelOnPulses.Name = "LabelOnPulses"
+        Me.LabelOnPulses.Size = New System.Drawing.Size(55, 13)
+        Me.LabelOnPulses.TabIndex = 935
+        Me.LabelOnPulses.Text = "On Pulses"
+        '
+        'ButtonAutoZero
+        '
+        Me.ButtonAutoZero.Location = New System.Drawing.Point(386, 27)
+        Me.ButtonAutoZero.Name = "ButtonAutoZero"
+        Me.ButtonAutoZero.Size = New System.Drawing.Size(114, 23)
+        Me.ButtonAutoZero.TabIndex = 937
+        Me.ButtonAutoZero.Text = "AutoZero"
+        Me.ButtonAutoZero.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(386, 148)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(114, 23)
+        Me.Button1.TabIndex = 938
+        Me.Button1.Text = "Over Current Test"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'ButtonReadRamAddress
+        '
+        Me.ButtonReadRamAddress.Location = New System.Drawing.Point(329, 399)
+        Me.ButtonReadRamAddress.Name = "ButtonReadRamAddress"
+        Me.ButtonReadRamAddress.Size = New System.Drawing.Size(114, 23)
+        Me.ButtonReadRamAddress.TabIndex = 939
+        Me.ButtonReadRamAddress.Text = "Read Ram Address"
+        Me.ButtonReadRamAddress.UseVisualStyleBackColor = True
+        '
+        'TextBoxRamAddress
+        '
+        Me.TextBoxRamAddress.Location = New System.Drawing.Point(329, 366)
+        Me.TextBoxRamAddress.Name = "TextBoxRamAddress"
+        Me.TextBoxRamAddress.Size = New System.Drawing.Size(114, 20)
+        Me.TextBoxRamAddress.TabIndex = 940
+        '
+        'LabelRamValue
+        '
+        Me.LabelRamValue.AutoSize = True
+        Me.LabelRamValue.Location = New System.Drawing.Point(326, 427)
+        Me.LabelRamValue.Name = "LabelRamValue"
+        Me.LabelRamValue.Size = New System.Drawing.Size(100, 13)
+        Me.LabelRamValue.TabIndex = 941
+        Me.LabelRamValue.Text = "Ram Value Decimal"
+        '
+        'LabelRamValueHex
+        '
+        Me.LabelRamValueHex.AutoSize = True
+        Me.LabelRamValueHex.Location = New System.Drawing.Point(326, 446)
+        Me.LabelRamValueHex.Name = "LabelRamValueHex"
+        Me.LabelRamValueHex.Size = New System.Drawing.Size(84, 13)
+        Me.LabelRamValueHex.TabIndex = 942
+        Me.LabelRamValueHex.Text = "Ram Value HEX"
+        '
+        'LabelRamValueBinary
+        '
+        Me.LabelRamValueBinary.AutoSize = True
+        Me.LabelRamValueBinary.Location = New System.Drawing.Point(326, 469)
+        Me.LabelRamValueBinary.Name = "LabelRamValueBinary"
+        Me.LabelRamValueBinary.Size = New System.Drawing.Size(91, 13)
+        Me.LabelRamValueBinary.TabIndex = 943
+        Me.LabelRamValueBinary.Text = "Ram Value Binary"
+        '
+        'FormOverCurrentTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 530)
+        Me.Controls.Add(Me.LabelRamValueBinary)
+        Me.Controls.Add(Me.LabelRamValueHex)
+        Me.Controls.Add(Me.LabelRamValue)
+        Me.Controls.Add(Me.TextBoxRamAddress)
+        Me.Controls.Add(Me.ButtonReadRamAddress)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.ButtonAutoZero)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.LabelOnPulses)
+        Me.Controls.Add(Me.TextBoxSetHomePosition)
+        Me.Controls.Add(Me.ButtonSetHomePosition)
+        Me.Controls.Add(Me.ButtonStopLog)
+        Me.Controls.Add(Me.ButtonStartLog)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.LabelMin)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.LabelMax)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.LabelHome)
+        Me.Controls.Add(Me.TextBoxErrorOffset)
+        Me.Controls.Add(Me.ButtonSetErrorOffset)
         Me.Controls.Add(Me.LabelD15)
         Me.Controls.Add(Me.LabelD14)
         Me.Controls.Add(Me.LabelD13)
@@ -653,7 +887,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.LabelTarget)
         Me.Controls.Add(Me.TextBoxCounterClockwise)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.ButtonCounterClockwise)
         Me.Controls.Add(Me.TextBoxClockWise)
         Me.Controls.Add(Me.ButtonClockWise)
         Me.Controls.Add(Me.TextBoxPosition)
@@ -668,7 +902,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TextBoxBaudRate)
         Me.Controls.Add(Me.ComboBoxComPorts)
         Me.Controls.Add(Me.LabelComMsg)
-        Me.Name = "Form1"
+        Me.Name = "FormOverCurrentTest"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -690,7 +924,7 @@ Partial Class Form1
     Friend WithEvents TextBoxClockWise As System.Windows.Forms.TextBox
     Friend WithEvents ButtonClockWise As System.Windows.Forms.Button
     Friend WithEvents TextBoxCounterClockwise As System.Windows.Forms.TextBox
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents ButtonCounterClockwise As System.Windows.Forms.Button
     Friend WithEvents LabelTarget As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -733,4 +967,26 @@ Partial Class Form1
     Friend WithEvents LabelD10 As System.Windows.Forms.Label
     Friend WithEvents LabelD9 As System.Windows.Forms.Label
     Friend WithEvents LabelD8 As System.Windows.Forms.Label
+    Friend WithEvents TextBoxErrorOffset As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonSetErrorOffset As System.Windows.Forms.Button
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents LabelHome As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents LabelMax As System.Windows.Forms.Label
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents LabelMin As System.Windows.Forms.Label
+    Friend WithEvents ButtonStartLog As System.Windows.Forms.Button
+    Friend WithEvents ButtonStopLog As System.Windows.Forms.Button
+    Friend WithEvents Timer2 As System.Windows.Forms.Timer
+    Friend WithEvents TextBoxSetHomePosition As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonSetHomePosition As System.Windows.Forms.Button
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents LabelOnPulses As System.Windows.Forms.Label
+    Friend WithEvents ButtonAutoZero As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents ButtonReadRamAddress As System.Windows.Forms.Button
+    Friend WithEvents TextBoxRamAddress As System.Windows.Forms.TextBox
+    Friend WithEvents LabelRamValue As System.Windows.Forms.Label
+    Friend WithEvents LabelRamValueHex As System.Windows.Forms.Label
+    Friend WithEvents LabelRamValueBinary As System.Windows.Forms.Label
 End Class

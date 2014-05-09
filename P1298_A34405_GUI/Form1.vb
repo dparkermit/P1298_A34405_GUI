@@ -2,11 +2,13 @@
 'Imports System.IO
 'Imports System.Collections
 
-Public Class Form1
+Public Class FormOverCurrentTest
     Dim autostep As UInt16
     Dim autointerval As Integer
     Dim power_ramp As UInt16
     Dim power_ramp_dan_state As Integer
+
+    Dim DataLogging As Boolean
 
     Public ReturnData As UInt16
     Dim ComError As Boolean
@@ -30,11 +32,15 @@ Public Class Form1
     Public Const CMD_SET_TARGET_POSITION As Byte = &H30
     Public Const CMD_MOVE_CLOCKWISE As Byte = &H32
     Public Const CMD_MOVE_COUNTER_CLOCKWISE As Byte = &H34
+    Public Const CMD_SET_HOME_POSITION As Byte = &H36
     Public Const CMD_READ_EEPROM_REGISTER As Byte = &H40
     Public Const CMD_WRITE_EEPROM_REGISTER As Byte = &H42
     Public Const CMD_OVERCURRENT_SHUTDOWN_TEST As Byte = &HE0
     Public Const CMD_READ_AFC_ERROR_DATA_HISTORY As Byte = &H50
     Public Const CMD_READ_MEM_LOCATION As Byte = &H54
+    Public Const CMD_SET_ERROR_OFFSET As Byte = &H60
+    Public Const CMD_DO_POSITION_AUTO_ZERO As Byte = &H70
+    Public Const CMD_DATA_LOGGING As Byte = &H56
 
 
 
@@ -46,7 +52,7 @@ Public Class Form1
     Public Const RAM_READ_CURRENT_POSITION As Byte = &H10
     Public Const RAM_READ_TARGET_POSITION As Byte = &H12
     Public Const RAM_READ_HOME_POSITION As Byte = &H14
-    Public ConstRAM_READ_MAX_POSITION As Byte = &H16
+    Public Const RAM_READ_MAX_POSITION As Byte = &H16
     Public Const RAM_READ_MIN_POSITION As Byte = &H18
 
     Public Const RAM_READ_ADCBUF0 As Byte = &H30
@@ -59,7 +65,7 @@ Public Class Form1
     Public Const RAM_READ_DELTA_DATA As Byte = &H41
     Public Const RAM_READ_FREQUENCY_ERROR_FILTERED As Byte = &H42
     Public Const RAM_READ_FREQUENCY_ERROR_OFFSET As Byte = &H43
-
+    Public Const RAM_READ_NUMBER_PULSES_ON As Byte = &H44
     Public ConstRAM_READ_PRF As Byte = &H50
 
 
@@ -85,8 +91,8 @@ Public Class Form1
         End If
 
         LabelMCUVersion.Text = "PIC Version "
+        ButtonStopLog.Enabled = False
 
-        OpenLogFile()
     End Sub
 
 
@@ -242,6 +248,8 @@ Public Class Form1
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_STATE, 0, 0) = True Then
             If ReturnData = &H10 Then
                 LabelState.Text = "Start Up"
+            ElseIf ReturnData = &H18 Then
+                LabelState.Text = "Wait for Zero"
             ElseIf ReturnData = &H20 Then
                 LabelState.Text = "Motor Zero"
             ElseIf ReturnData = &H24 Then
@@ -264,7 +272,7 @@ Public Class Form1
 
         ' Read Pic Version
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_VERSION, 0, 0) = True Then
-            LabelMCUVersion.Text = ReturnData
+            LabelMCUVersion.Text = ReturnData.ToString("X4")
         Else
             LabelMCUVersion.Text = "error"
             Exit Sub
@@ -284,6 +292,30 @@ Public Class Form1
             LabelTarget.Text = ReturnData
         Else
             LabelTarget.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Home Position
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_HOME_POSITION, 0, 0) = True Then
+            LabelHome.Text = ReturnData
+        Else
+            LabelHome.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Max Position
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_MAX_POSITION, 0, 0) = True Then
+            LabelMax.Text = ReturnData
+        Else
+            LabelMax.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Min Position
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_MIN_POSITION, 0, 0) = True Then
+            LabelMin.Text = ReturnData
+        Else
+            LabelMin.Text = "error"
             Exit Sub
         End If
 
@@ -366,6 +398,15 @@ Public Class Form1
             Exit Sub
         End If
 
+        ' Read Number of Pulses
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_NUMBER_PULSES_ON, 0, 0) = True Then
+            LabelOnPulses.Text = ReturnData
+        Else
+            LabelOnPulses.Text = "error"
+            Exit Sub
+        End If
+
+
     End Sub
 
 
@@ -376,26 +417,24 @@ Public Class Form1
         filePath = System.IO.Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, fileName)
         file = My.Computer.FileSystem.OpenTextFileWriter(filePath, True)
         file.Write("Time , ")
-        file.Write("State , ")
-        'file.Write("Target Power , ")
-        'file.Write("Fwd A Power , ")
-        'file.Write("Fwd B Power, ")
-        'file.Write("Pid Dac Out , ")
-        'file.Write("RF Amp Temp , ")
-        'file.WriteLine("")
-        file.Close()
+        file.Write("Position , ")
+        file.Write("Target Position , ")
+        file.Write("Sigma , ")
+        file.Write("Delta , ")
+        file.Write("Error Filtered , ")
+        file.Write("On Pulses")
+        file.WriteLine("")
     End Sub
 
     Private Sub WriteToLogFile()
-        file = My.Computer.FileSystem.OpenTextFileWriter(filePath, True)
-        file.Write(LabelTime.Text & " , ")
-        file.Write(LabelState.Text & " , ")
-        'file.Write(LabelTargetPower.Text & " , ")
-        'file.Write(LabelFwdAPower.Text & " , ")
-        'file.Write(LabelFwdBPower.Text & " , ")
-        'file.Write(LabelDacOut.Text & " , ")
-        'file.Write(LabelRFAmpTemp.Text & " , ")
+        file.Write(DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") & " , ")
+        file.Write(LabelPosition.Text & " , ")
+        file.Write(LabelError.Text & " , ")
+        file.Write(LabelOnPulses.Text)
         file.WriteLine("")
+    End Sub
+
+    Private Sub CLoseLogFile()
         file.Close()
     End Sub
 
@@ -471,7 +510,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub ButtonCounterClockwise_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCounterClockwise.Click
         Dim ProgramWord As UInt16
         Dim ProgramHB As Byte
         Dim ProgramLB As Byte
@@ -489,10 +528,107 @@ Public Class Form1
             MsgBox("Unable to Move Clockwise")
         End If
     End Sub
+    Private Sub LogData()
+        ' Read Current Position
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_CURRENT_POSITION, 0, 0) = True Then
+            LabelPosition.Text = ReturnData
+        Else
+            LabelPosition.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Error Data
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_FREQUENCY_ERROR_FILTERED, 0, 0) = True Then
+            LabelError.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelError.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Number of Pulses
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_NUMBER_PULSES_ON, 0, 0) = True Then
+            LabelOnPulses.Text = ReturnData
+        Else
+            LabelOnPulses.Text = "error"
+            Exit Sub
+        End If
+
+        WriteToLogFile()
+
+    End Sub
+
+    Private Sub LogDataFast()
+        Dim data_byte As Byte
+        Dim position_word As UInt16
+        Dim target_word As UInt16
+        Dim sigma_byte As Byte
+        Dim delta_byte As Byte
+        Dim error_byte As Byte
+        Dim count_word As UInt16
+        OpenSerialPortETM()
+        OpenLogFile()
+        Do While DataLogging = True
+            Application.DoEvents()
+            Try
+                If SerialPortETM.BytesToRead >= 10 Then
+                    data_byte = SerialPortETM.ReadByte
+                    If data_byte = &HFE Then
+                        position_word = SerialPortETM.ReadByte
+                        position_word = position_word * 256
+                        position_word = position_word + SerialPortETM.ReadByte
+
+                        target_word = SerialPortETM.ReadByte
+                        target_word = target_word * 256
+                        target_word = target_word + SerialPortETM.ReadByte
+
+                        sigma_byte = SerialPortETM.ReadByte
+                        delta_byte = SerialPortETM.ReadByte
+                        error_byte = SerialPortETM.ReadByte
+                        count_word = SerialPortETM.ReadByte
+                        count_word = count_word * 256
+                        count_word = count_word + SerialPortETM.ReadByte
+
+                        file.Write(DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") & " , ")
+                        file.Write(position_word & " , ")
+                        file.Write(target_word & " , ")
+                        file.Write(sigma_byte & " , ")
+                        file.Write(delta_byte & " , ")
+                        file.Write(ConvertToSignedByte(error_byte) & " , ")
+                        file.Write(count_word)
+                        file.WriteLine("")
+                    End If
+                End If
+            Catch ex As Exception
+                DataLogging = False
+            End Try
+
+        Loop
+
+        CLoseLogFile()
+        CloseSerialPortETM()
+
+    End Sub
 
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-        ReadAllFromRam()
+        'LogData()
+        LogDataFast()
     End Sub
+    Private Function ConvertToSignedByte(ByVal value_unsigned As Byte) As Int16
+        Dim ReturnDataSigned As Int16
+        ReturnDataSigned = 0
+        Try
+            If value_unsigned <= 127 Then
+                ReturnDataSigned = value_unsigned
+            Else
+                ReturnDataSigned = value_unsigned - 255
+            End If
+
+        Catch ex As Exception
+
+        End Try
+
+        Return ReturnDataSigned
+    End Function
 
     Private Function ConvertToSigned(ByVal value_unsigned As UInt16) As Int16
         Dim ReturnDataSigned As Int16
@@ -507,8 +643,6 @@ Public Class Form1
         Catch ex As Exception
 
         End Try
- 
-
 
         Return ReturnDataSigned
     End Function
@@ -628,5 +762,127 @@ Public Class Form1
         End If
 
 
+    End Sub
+
+    Private Sub ButtonSetErrorOffset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSetErrorOffset.Click
+        Dim Value As Int16
+        Dim ProgramWord As UInt16
+        Dim ProgramHB As Byte
+        Dim ProgramLB As Byte
+        Value = Int(TextBoxErrorOffset.Text)
+
+        If Value >= 127 Then
+            Value = 127
+        End If
+        If Value <= -128 Then
+            Value = -128
+        End If
+        If Value > 0 Then
+            Try
+                ProgramWord = Value
+                ProgramHB = Int(ProgramWord / 256)
+                ProgramLB = ProgramWord Mod 256
+            Catch ex As Exception
+                MsgBox("Data not Valid")
+            End Try
+
+            If SendAndValidateCommand(CMD_SET_ERROR_OFFSET, 0, ProgramHB, ProgramLB) = True Then
+            Else
+                MsgBox("Unable to Set Offset")
+            End If
+        Else
+            Value = 0 - Value
+            Try
+                ProgramWord = Value
+                ProgramHB = Int(ProgramWord / 256)
+                ProgramLB = ProgramWord Mod 256
+            Catch ex As Exception
+                MsgBox("Data not Valid")
+            End Try
+
+            If SendAndValidateCommand(CMD_SET_ERROR_OFFSET, 1, ProgramHB, ProgramLB) = True Then
+            Else
+                MsgBox("Unable to Set Offset")
+            End If
+        End If
+
+
+    End Sub
+
+
+    Private Sub ButtonStartLog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonStartLog.Click
+        Timer2.Enabled = False
+        SendAndValidateCommand(CMD_DATA_LOGGING, 1, 0, 0)
+        ButtonStartLog.Enabled = False
+        ButtonStopLog.Enabled = True
+        DataLogging = True
+        LogDataFast()
+        'Timer1.Enabled = True
+    End Sub
+
+    Private Sub ButtonStopLog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonStopLog.Click
+        'Timer1.Enabled = False
+        DataLogging = False
+        SendAndValidateCommand(CMD_DATA_LOGGING, 0, 0, 0)
+        'CLoseLogFile()
+        ButtonStartLog.Enabled = True
+        ButtonStopLog.Enabled = False
+        Timer2.Enabled = True
+    End Sub
+
+    Private Sub Timer2_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer2.Tick
+        ReadAllFromRam()
+    End Sub
+
+    Private Sub ButtonSetHomePosition_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSetHomePosition.Click
+        Dim ProgramWord As UInt16
+        Dim ProgramHB As Byte
+        Dim ProgramLB As Byte
+
+        Try
+            ProgramWord = Int(TextBoxSetHomePosition.Text)
+            ProgramHB = Int(ProgramWord / 256)
+            ProgramLB = ProgramWord Mod 256
+        Catch ex As Exception
+            MsgBox("Data not Valid")
+        End Try
+
+        If SendAndValidateCommand(CMD_SET_HOME_POSITION, 0, ProgramHB, ProgramLB) = True Then
+        Else
+            MsgBox("Unable to Set Position")
+        End If
+    End Sub
+
+    Private Sub ButtonAutoZero_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonAutoZero.Click
+        SendAndValidateCommand(CMD_DO_POSITION_AUTO_ZERO, 0, 0, 0)
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        SendAndValidateCommand(CMD_OVERCURRENT_SHUTDOWN_TEST, 0, 0, 0)
+    End Sub
+
+    Private Sub ButtonReadRamAddress_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonReadRamAddress.Click
+        Dim ProgramWord As UInt16
+        Dim ProgramHB As Byte
+        Dim ProgramLB As Byte
+
+        Try
+            ProgramWord = Int(TextBoxRamAddress.Text)
+            ProgramHB = Int(ProgramWord / 256)
+            ProgramLB = ProgramWord Mod 256
+        Catch ex As Exception
+            MsgBox("Data not Valid")
+        End Try
+
+        If SendAndValidateCommand(CMD_READ_MEM_LOCATION, 0, ProgramHB, ProgramLB) = True Then
+            LabelRamValue.Text = ReturnData
+            LabelRamValueHex.Text = ReturnData.ToString("X4")
+            'LabelRamValueBinary.Text = ReturnData.ToString("X16")
+
+        Else
+            LabelRamValue.Text = "Error"
+            LabelRamValueHex.Text = "Error"
+            LabelRamValueBinary.Text = "Error"
+        End If
     End Sub
 End Class
