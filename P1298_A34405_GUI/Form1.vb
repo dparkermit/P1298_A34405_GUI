@@ -40,6 +40,7 @@ Public Class FormOverCurrentTest
     Public Const CMD_READ_MEM_LOCATION As Byte = &H54
     Public Const CMD_SET_ERROR_OFFSET As Byte = &H60
     Public Const CMD_DO_POSITION_AUTO_ZERO As Byte = &H70
+    Public Const CMD_AFC_NOT_PULSING_GO_HOME As Byte = &H72
     Public Const CMD_DATA_LOGGING As Byte = &H56
 
 
@@ -60,12 +61,17 @@ Public Class FormOverCurrentTest
     Public Const RAM_READ_ADC_MOTOR_CURRENT_A As Byte = &H32
     Public Const RAM_READ_ADC_MOTOR_CURRENT_B As Byte = &H33
     Public Const RAM_READ_ADC_PARAMETER_INPUT As Byte = &H3B
+    Public Const RAM_READ_ANALOG_INPUT As Byte = &H3C
+    Public Const RAM_READ_ANALOG_OUTPUT As Byte = &H3D
 
     Public Const RAM_READ_SIGMA_DATA As Byte = &H40
     Public Const RAM_READ_DELTA_DATA As Byte = &H41
     Public Const RAM_READ_FREQUENCY_ERROR_FILTERED As Byte = &H42
     Public Const RAM_READ_FREQUENCY_ERROR_OFFSET As Byte = &H43
     Public Const RAM_READ_NUMBER_PULSES_ON As Byte = &H44
+    Public Const RAM_READ_TIME_NOT_PULSING As Byte = &H45
+    Public Const RAM_READ_AFC_DISTANCE_FROM_HOME_AT_STOP As Byte = &H46
+
     Public ConstRAM_READ_PRF As Byte = &H50
 
 
@@ -112,7 +118,7 @@ Public Class FormOverCurrentTest
             SerialPortETM.BaudRate = My.Settings.SelectedBaudRate
 
         Catch ex As Exception
-            MsgBox("Please Select a valid Com Port")
+
         End Try
 
         Try
@@ -242,6 +248,7 @@ Public Class FormOverCurrentTest
 
 
     Private Sub ReadAllFromRam()
+        Dim datadouble As Double
         LabelTime.Text = DateTime.Now
 
         'Read Control State
@@ -359,6 +366,24 @@ Public Class FormOverCurrentTest
             Exit Sub
         End If
 
+        ' Read Analog INPUT
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ANALOG_INPUT, 0, 0) = True Then
+            LabelAnalogInput.Text = ReturnData
+        Else
+            LabelAnalogInput.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Analog Output
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ANALOG_OUTPUT, 0, 0) = True Then
+            datadouble = ReturnData
+            datadouble = datadouble * 5 / 2 ^ 12
+            LabelAnalogOutput.Text = datadouble
+        Else
+            LabelAnalogOutput.Text = "error"
+            Exit Sub
+        End If
+
         ' Read Sigma Data
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_SIGMA_DATA, 0, 0) = True Then
             LabelSigma.Text = ReturnData
@@ -405,6 +430,24 @@ Public Class FormOverCurrentTest
             LabelOnPulses.Text = "error"
             Exit Sub
         End If
+
+        ' Read Time not Pulsing
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_TIME_NOT_PULSING, 0, 0) = True Then
+            datadouble = ReturnData
+            LabelTimeOff.Text = (datadouble / 10)
+        Else
+            LabelTimeOff.Text = "error"
+            Exit Sub
+        End If
+
+        ' Read Position when stopped pulsing
+        If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_AFC_DISTANCE_FROM_HOME_AT_STOP, 0, 0) = True Then
+            LabelStopPosition.Text = ConvertToSigned(ReturnData)
+        Else
+            LabelStopPosition.Text = "error"
+            Exit Sub
+        End If
+
 
 
     End Sub
@@ -576,17 +619,27 @@ Public Class FormOverCurrentTest
                         position_word = SerialPortETM.ReadByte
                         position_word = position_word * 256
                         position_word = position_word + SerialPortETM.ReadByte
+                        LabelPosition.Text = position_word
 
                         target_word = SerialPortETM.ReadByte
                         target_word = target_word * 256
                         target_word = target_word + SerialPortETM.ReadByte
+                        LabelTarget.Text = target_word
 
                         sigma_byte = SerialPortETM.ReadByte
+                        LabelSigma.Text = sigma_byte
+
                         delta_byte = SerialPortETM.ReadByte
+                        LabelDelta.Text = delta_byte
+
                         error_byte = SerialPortETM.ReadByte
+                        LabelError.Text = ConvertToSignedByte(error_byte)
+
                         count_word = SerialPortETM.ReadByte
                         count_word = count_word * 256
                         count_word = count_word + SerialPortETM.ReadByte
+                        LabelOnPulses.Text = count_word
+
 
                         file.Write(DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") & " , ")
                         file.Write(position_word & " , ")
@@ -884,5 +937,9 @@ Public Class FormOverCurrentTest
             LabelRamValueHex.Text = "Error"
             LabelRamValueBinary.Text = "Error"
         End If
+    End Sub
+
+    Private Sub ButtonCoolDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCoolDown.Click
+        SendAndValidateCommand(CMD_AFC_NOT_PULSING_GO_HOME, 0, 0, 0)
     End Sub
 End Class

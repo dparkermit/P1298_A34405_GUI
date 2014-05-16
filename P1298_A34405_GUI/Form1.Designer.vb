@@ -104,6 +104,15 @@ Partial Class FormOverCurrentTest
         Me.LabelRamValue = New System.Windows.Forms.Label()
         Me.LabelRamValueHex = New System.Windows.Forms.Label()
         Me.LabelRamValueBinary = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.LabelTimeOff = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.LabelStopPosition = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.LabelAnalogInput = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.LabelAnalogOutput = New System.Windows.Forms.Label()
+        Me.ButtonCoolDown = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ButtonSetBaudRate
@@ -383,7 +392,7 @@ Partial Class FormOverCurrentTest
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label4.Location = New System.Drawing.Point(648, 74)
+        Me.Label4.Location = New System.Drawing.Point(647, 100)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(36, 13)
         Me.Label4.TabIndex = 897
@@ -392,7 +401,7 @@ Partial Class FormOverCurrentTest
         'LabelSigma
         '
         Me.LabelSigma.AutoSize = True
-        Me.LabelSigma.Location = New System.Drawing.Point(729, 74)
+        Me.LabelSigma.Location = New System.Drawing.Point(728, 100)
         Me.LabelSigma.Name = "LabelSigma"
         Me.LabelSigma.Size = New System.Drawing.Size(36, 13)
         Me.LabelSigma.TabIndex = 896
@@ -402,7 +411,7 @@ Partial Class FormOverCurrentTest
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label6.Location = New System.Drawing.Point(648, 87)
+        Me.Label6.Location = New System.Drawing.Point(647, 113)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(32, 13)
         Me.Label6.TabIndex = 899
@@ -411,7 +420,7 @@ Partial Class FormOverCurrentTest
         'LabelDelta
         '
         Me.LabelDelta.AutoSize = True
-        Me.LabelDelta.Location = New System.Drawing.Point(729, 87)
+        Me.LabelDelta.Location = New System.Drawing.Point(728, 113)
         Me.LabelDelta.Name = "LabelDelta"
         Me.LabelDelta.Size = New System.Drawing.Size(32, 13)
         Me.LabelDelta.TabIndex = 898
@@ -421,7 +430,7 @@ Partial Class FormOverCurrentTest
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label10.Location = New System.Drawing.Point(648, 100)
+        Me.Label10.Location = New System.Drawing.Point(647, 126)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(29, 13)
         Me.Label10.TabIndex = 901
@@ -430,7 +439,7 @@ Partial Class FormOverCurrentTest
         'LabelError
         '
         Me.LabelError.AutoSize = True
-        Me.LabelError.Location = New System.Drawing.Point(729, 100)
+        Me.LabelError.Location = New System.Drawing.Point(728, 126)
         Me.LabelError.Name = "LabelError"
         Me.LabelError.Size = New System.Drawing.Size(29, 13)
         Me.LabelError.TabIndex = 900
@@ -440,7 +449,7 @@ Partial Class FormOverCurrentTest
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label7.Location = New System.Drawing.Point(648, 113)
+        Me.Label7.Location = New System.Drawing.Point(647, 139)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(60, 13)
         Me.Label7.TabIndex = 903
@@ -449,7 +458,7 @@ Partial Class FormOverCurrentTest
         'LabelErrorOffset
         '
         Me.LabelErrorOffset.AutoSize = True
-        Me.LabelErrorOffset.Location = New System.Drawing.Point(729, 113)
+        Me.LabelErrorOffset.Location = New System.Drawing.Point(728, 139)
         Me.LabelErrorOffset.Name = "LabelErrorOffset"
         Me.LabelErrorOffset.Size = New System.Drawing.Size(60, 13)
         Me.LabelErrorOffset.TabIndex = 902
@@ -459,7 +468,7 @@ Partial Class FormOverCurrentTest
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label12.Location = New System.Drawing.Point(648, 126)
+        Me.Label12.Location = New System.Drawing.Point(647, 152)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(28, 13)
         Me.Label12.TabIndex = 905
@@ -468,7 +477,7 @@ Partial Class FormOverCurrentTest
         'LabelPRF
         '
         Me.LabelPRF.AutoSize = True
-        Me.LabelPRF.Location = New System.Drawing.Point(729, 126)
+        Me.LabelPRF.Location = New System.Drawing.Point(728, 152)
         Me.LabelPRF.Name = "LabelPRF"
         Me.LabelPRF.Size = New System.Drawing.Size(28, 13)
         Me.LabelPRF.TabIndex = 904
@@ -476,7 +485,7 @@ Partial Class FormOverCurrentTest
         '
         'ButtonReadErrorHistory
         '
-        Me.ButtonReadErrorHistory.Location = New System.Drawing.Point(650, 311)
+        Me.ButtonReadErrorHistory.Location = New System.Drawing.Point(650, 388)
         Me.ButtonReadErrorHistory.Name = "ButtonReadErrorHistory"
         Me.ButtonReadErrorHistory.Size = New System.Drawing.Size(114, 23)
         Me.ButtonReadErrorHistory.TabIndex = 906
@@ -486,7 +495,7 @@ Partial Class FormOverCurrentTest
         'LabelD0
         '
         Me.LabelD0.AutoSize = True
-        Me.LabelD0.Location = New System.Drawing.Point(647, 184)
+        Me.LabelD0.Location = New System.Drawing.Point(647, 261)
         Me.LabelD0.Name = "LabelD0"
         Me.LabelD0.Size = New System.Drawing.Size(39, 13)
         Me.LabelD0.TabIndex = 907
@@ -495,7 +504,7 @@ Partial Class FormOverCurrentTest
         'LabelD1
         '
         Me.LabelD1.AutoSize = True
-        Me.LabelD1.Location = New System.Drawing.Point(647, 197)
+        Me.LabelD1.Location = New System.Drawing.Point(647, 274)
         Me.LabelD1.Name = "LabelD1"
         Me.LabelD1.Size = New System.Drawing.Size(39, 13)
         Me.LabelD1.TabIndex = 908
@@ -504,7 +513,7 @@ Partial Class FormOverCurrentTest
         'LabelD3
         '
         Me.LabelD3.AutoSize = True
-        Me.LabelD3.Location = New System.Drawing.Point(647, 223)
+        Me.LabelD3.Location = New System.Drawing.Point(647, 300)
         Me.LabelD3.Name = "LabelD3"
         Me.LabelD3.Size = New System.Drawing.Size(39, 13)
         Me.LabelD3.TabIndex = 910
@@ -513,7 +522,7 @@ Partial Class FormOverCurrentTest
         'LabelD2
         '
         Me.LabelD2.AutoSize = True
-        Me.LabelD2.Location = New System.Drawing.Point(647, 210)
+        Me.LabelD2.Location = New System.Drawing.Point(647, 287)
         Me.LabelD2.Name = "LabelD2"
         Me.LabelD2.Size = New System.Drawing.Size(39, 13)
         Me.LabelD2.TabIndex = 909
@@ -522,7 +531,7 @@ Partial Class FormOverCurrentTest
         'LabelD7
         '
         Me.LabelD7.AutoSize = True
-        Me.LabelD7.Location = New System.Drawing.Point(647, 275)
+        Me.LabelD7.Location = New System.Drawing.Point(647, 352)
         Me.LabelD7.Name = "LabelD7"
         Me.LabelD7.Size = New System.Drawing.Size(39, 13)
         Me.LabelD7.TabIndex = 914
@@ -531,7 +540,7 @@ Partial Class FormOverCurrentTest
         'LabelD6
         '
         Me.LabelD6.AutoSize = True
-        Me.LabelD6.Location = New System.Drawing.Point(647, 262)
+        Me.LabelD6.Location = New System.Drawing.Point(647, 339)
         Me.LabelD6.Name = "LabelD6"
         Me.LabelD6.Size = New System.Drawing.Size(39, 13)
         Me.LabelD6.TabIndex = 913
@@ -540,7 +549,7 @@ Partial Class FormOverCurrentTest
         'LabelD5
         '
         Me.LabelD5.AutoSize = True
-        Me.LabelD5.Location = New System.Drawing.Point(647, 249)
+        Me.LabelD5.Location = New System.Drawing.Point(647, 326)
         Me.LabelD5.Name = "LabelD5"
         Me.LabelD5.Size = New System.Drawing.Size(39, 13)
         Me.LabelD5.TabIndex = 912
@@ -549,7 +558,7 @@ Partial Class FormOverCurrentTest
         'LabelD4
         '
         Me.LabelD4.AutoSize = True
-        Me.LabelD4.Location = New System.Drawing.Point(647, 236)
+        Me.LabelD4.Location = New System.Drawing.Point(647, 313)
         Me.LabelD4.Name = "LabelD4"
         Me.LabelD4.Size = New System.Drawing.Size(39, 13)
         Me.LabelD4.TabIndex = 911
@@ -558,7 +567,7 @@ Partial Class FormOverCurrentTest
         'LabelD15
         '
         Me.LabelD15.AutoSize = True
-        Me.LabelD15.Location = New System.Drawing.Point(728, 275)
+        Me.LabelD15.Location = New System.Drawing.Point(728, 352)
         Me.LabelD15.Name = "LabelD15"
         Me.LabelD15.Size = New System.Drawing.Size(39, 13)
         Me.LabelD15.TabIndex = 922
@@ -567,7 +576,7 @@ Partial Class FormOverCurrentTest
         'LabelD14
         '
         Me.LabelD14.AutoSize = True
-        Me.LabelD14.Location = New System.Drawing.Point(728, 262)
+        Me.LabelD14.Location = New System.Drawing.Point(728, 339)
         Me.LabelD14.Name = "LabelD14"
         Me.LabelD14.Size = New System.Drawing.Size(39, 13)
         Me.LabelD14.TabIndex = 921
@@ -576,7 +585,7 @@ Partial Class FormOverCurrentTest
         'LabelD13
         '
         Me.LabelD13.AutoSize = True
-        Me.LabelD13.Location = New System.Drawing.Point(728, 249)
+        Me.LabelD13.Location = New System.Drawing.Point(728, 326)
         Me.LabelD13.Name = "LabelD13"
         Me.LabelD13.Size = New System.Drawing.Size(39, 13)
         Me.LabelD13.TabIndex = 920
@@ -585,7 +594,7 @@ Partial Class FormOverCurrentTest
         'LabelD12
         '
         Me.LabelD12.AutoSize = True
-        Me.LabelD12.Location = New System.Drawing.Point(728, 236)
+        Me.LabelD12.Location = New System.Drawing.Point(728, 313)
         Me.LabelD12.Name = "LabelD12"
         Me.LabelD12.Size = New System.Drawing.Size(39, 13)
         Me.LabelD12.TabIndex = 919
@@ -594,7 +603,7 @@ Partial Class FormOverCurrentTest
         'LabelD11
         '
         Me.LabelD11.AutoSize = True
-        Me.LabelD11.Location = New System.Drawing.Point(728, 223)
+        Me.LabelD11.Location = New System.Drawing.Point(728, 300)
         Me.LabelD11.Name = "LabelD11"
         Me.LabelD11.Size = New System.Drawing.Size(39, 13)
         Me.LabelD11.TabIndex = 918
@@ -603,7 +612,7 @@ Partial Class FormOverCurrentTest
         'LabelD10
         '
         Me.LabelD10.AutoSize = True
-        Me.LabelD10.Location = New System.Drawing.Point(728, 210)
+        Me.LabelD10.Location = New System.Drawing.Point(728, 287)
         Me.LabelD10.Name = "LabelD10"
         Me.LabelD10.Size = New System.Drawing.Size(39, 13)
         Me.LabelD10.TabIndex = 917
@@ -612,7 +621,7 @@ Partial Class FormOverCurrentTest
         'LabelD9
         '
         Me.LabelD9.AutoSize = True
-        Me.LabelD9.Location = New System.Drawing.Point(728, 197)
+        Me.LabelD9.Location = New System.Drawing.Point(728, 274)
         Me.LabelD9.Name = "LabelD9"
         Me.LabelD9.Size = New System.Drawing.Size(39, 13)
         Me.LabelD9.TabIndex = 916
@@ -621,7 +630,7 @@ Partial Class FormOverCurrentTest
         'LabelD8
         '
         Me.LabelD8.AutoSize = True
-        Me.LabelD8.Location = New System.Drawing.Point(728, 184)
+        Me.LabelD8.Location = New System.Drawing.Point(728, 261)
         Me.LabelD8.Name = "LabelD8"
         Me.LabelD8.Size = New System.Drawing.Size(39, 13)
         Me.LabelD8.TabIndex = 915
@@ -743,7 +752,7 @@ Partial Class FormOverCurrentTest
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label15.Location = New System.Drawing.Point(648, 139)
+        Me.Label15.Location = New System.Drawing.Point(647, 165)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(55, 13)
         Me.Label15.TabIndex = 936
@@ -752,7 +761,7 @@ Partial Class FormOverCurrentTest
         'LabelOnPulses
         '
         Me.LabelOnPulses.AutoSize = True
-        Me.LabelOnPulses.Location = New System.Drawing.Point(729, 139)
+        Me.LabelOnPulses.Location = New System.Drawing.Point(728, 165)
         Me.LabelOnPulses.Name = "LabelOnPulses"
         Me.LabelOnPulses.Size = New System.Drawing.Size(55, 13)
         Me.LabelOnPulses.TabIndex = 935
@@ -819,11 +828,105 @@ Partial Class FormOverCurrentTest
         Me.LabelRamValueBinary.TabIndex = 943
         Me.LabelRamValueBinary.Text = "Ram Value Binary"
         '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label17.Location = New System.Drawing.Point(647, 179)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(47, 13)
+        Me.Label17.TabIndex = 945
+        Me.Label17.Text = "Time Off"
+        '
+        'LabelTimeOff
+        '
+        Me.LabelTimeOff.AutoSize = True
+        Me.LabelTimeOff.Location = New System.Drawing.Point(728, 179)
+        Me.LabelTimeOff.Name = "LabelTimeOff"
+        Me.LabelTimeOff.Size = New System.Drawing.Size(47, 13)
+        Me.LabelTimeOff.TabIndex = 944
+        Me.LabelTimeOff.Text = "Time Off"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label18.Location = New System.Drawing.Point(647, 192)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(69, 13)
+        Me.Label18.TabIndex = 947
+        Me.Label18.Text = "Stop Position"
+        '
+        'LabelStopPosition
+        '
+        Me.LabelStopPosition.AutoSize = True
+        Me.LabelStopPosition.Location = New System.Drawing.Point(728, 192)
+        Me.LabelStopPosition.Name = "LabelStopPosition"
+        Me.LabelStopPosition.Size = New System.Drawing.Size(69, 13)
+        Me.LabelStopPosition.TabIndex = 946
+        Me.LabelStopPosition.Text = "Stop Position"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label19.Location = New System.Drawing.Point(647, 74)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(67, 13)
+        Me.Label19.TabIndex = 949
+        Me.Label19.Text = "Analog Input"
+        '
+        'LabelAnalogInput
+        '
+        Me.LabelAnalogInput.AutoSize = True
+        Me.LabelAnalogInput.Location = New System.Drawing.Point(728, 74)
+        Me.LabelAnalogInput.Name = "LabelAnalogInput"
+        Me.LabelAnalogInput.Size = New System.Drawing.Size(67, 13)
+        Me.LabelAnalogInput.TabIndex = 948
+        Me.LabelAnalogInput.Text = "Analog Input"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label20.Location = New System.Drawing.Point(647, 87)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(75, 13)
+        Me.Label20.TabIndex = 951
+        Me.Label20.Text = "Analog Output"
+        '
+        'LabelAnalogOutput
+        '
+        Me.LabelAnalogOutput.AutoSize = True
+        Me.LabelAnalogOutput.Location = New System.Drawing.Point(728, 87)
+        Me.LabelAnalogOutput.Name = "LabelAnalogOutput"
+        Me.LabelAnalogOutput.Size = New System.Drawing.Size(75, 13)
+        Me.LabelAnalogOutput.TabIndex = 950
+        Me.LabelAnalogOutput.Text = "Analog Output"
+        '
+        'ButtonCoolDown
+        '
+        Me.ButtonCoolDown.Location = New System.Drawing.Point(650, 226)
+        Me.ButtonCoolDown.Name = "ButtonCoolDown"
+        Me.ButtonCoolDown.Size = New System.Drawing.Size(114, 23)
+        Me.ButtonCoolDown.TabIndex = 952
+        Me.ButtonCoolDown.Text = "Finish Cool Down"
+        Me.ButtonCoolDown.UseVisualStyleBackColor = True
+        '
         'FormOverCurrentTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 530)
+        Me.Controls.Add(Me.ButtonCoolDown)
+        Me.Controls.Add(Me.Label20)
+        Me.Controls.Add(Me.LabelAnalogOutput)
+        Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.LabelAnalogInput)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.LabelStopPosition)
+        Me.Controls.Add(Me.Label17)
+        Me.Controls.Add(Me.LabelTimeOff)
         Me.Controls.Add(Me.LabelRamValueBinary)
         Me.Controls.Add(Me.LabelRamValueHex)
         Me.Controls.Add(Me.LabelRamValue)
@@ -989,4 +1092,13 @@ Partial Class FormOverCurrentTest
     Friend WithEvents LabelRamValue As System.Windows.Forms.Label
     Friend WithEvents LabelRamValueHex As System.Windows.Forms.Label
     Friend WithEvents LabelRamValueBinary As System.Windows.Forms.Label
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents LabelTimeOff As System.Windows.Forms.Label
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents LabelStopPosition As System.Windows.Forms.Label
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents LabelAnalogInput As System.Windows.Forms.Label
+    Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents LabelAnalogOutput As System.Windows.Forms.Label
+    Friend WithEvents ButtonCoolDown As System.Windows.Forms.Button
 End Class
