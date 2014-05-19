@@ -113,6 +113,10 @@ Partial Class FormOverCurrentTest
         Me.Label20 = New System.Windows.Forms.Label()
         Me.LabelAnalogOutput = New System.Windows.Forms.Label()
         Me.ButtonCoolDown = New System.Windows.Forms.Button()
+        Me.TextBoxSetDamping = New System.Windows.Forms.TextBox()
+        Me.ButtonSetDamping = New System.Windows.Forms.Button()
+        Me.TextBoxSetSpeed = New System.Windows.Forms.TextBox()
+        Me.ButtonSetSpeed = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ButtonSetBaudRate
@@ -913,11 +917,49 @@ Partial Class FormOverCurrentTest
         Me.ButtonCoolDown.Text = "Finish Cool Down"
         Me.ButtonCoolDown.UseVisualStyleBackColor = True
         '
+        'TextBoxSetDamping
+        '
+        Me.TextBoxSetDamping.Location = New System.Drawing.Point(329, 313)
+        Me.TextBoxSetDamping.Name = "TextBoxSetDamping"
+        Me.TextBoxSetDamping.Size = New System.Drawing.Size(114, 20)
+        Me.TextBoxSetDamping.TabIndex = 956
+        Me.TextBoxSetDamping.Text = "6"
+        '
+        'ButtonSetDamping
+        '
+        Me.ButtonSetDamping.Location = New System.Drawing.Point(468, 310)
+        Me.ButtonSetDamping.Name = "ButtonSetDamping"
+        Me.ButtonSetDamping.Size = New System.Drawing.Size(134, 23)
+        Me.ButtonSetDamping.TabIndex = 955
+        Me.ButtonSetDamping.Text = "Set Motor Damping"
+        Me.ButtonSetDamping.UseVisualStyleBackColor = True
+        '
+        'TextBoxSetSpeed
+        '
+        Me.TextBoxSetSpeed.Location = New System.Drawing.Point(329, 287)
+        Me.TextBoxSetSpeed.Name = "TextBoxSetSpeed"
+        Me.TextBoxSetSpeed.Size = New System.Drawing.Size(114, 20)
+        Me.TextBoxSetSpeed.TabIndex = 954
+        Me.TextBoxSetSpeed.Text = "100"
+        '
+        'ButtonSetSpeed
+        '
+        Me.ButtonSetSpeed.Location = New System.Drawing.Point(468, 284)
+        Me.ButtonSetSpeed.Name = "ButtonSetSpeed"
+        Me.ButtonSetSpeed.Size = New System.Drawing.Size(134, 23)
+        Me.ButtonSetSpeed.TabIndex = 953
+        Me.ButtonSetSpeed.Text = "Set Speed"
+        Me.ButtonSetSpeed.UseVisualStyleBackColor = True
+        '
         'FormOverCurrentTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 530)
+        Me.Controls.Add(Me.TextBoxSetDamping)
+        Me.Controls.Add(Me.ButtonSetDamping)
+        Me.Controls.Add(Me.TextBoxSetSpeed)
+        Me.Controls.Add(Me.ButtonSetSpeed)
         Me.Controls.Add(Me.ButtonCoolDown)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.LabelAnalogOutput)
@@ -1101,4 +1143,8 @@ Partial Class FormOverCurrentTest
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents LabelAnalogOutput As System.Windows.Forms.Label
     Friend WithEvents ButtonCoolDown As System.Windows.Forms.Button
+    Friend WithEvents TextBoxSetDamping As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonSetDamping As System.Windows.Forms.Button
+    Friend WithEvents TextBoxSetSpeed As System.Windows.Forms.TextBox
+    Friend WithEvents ButtonSetSpeed As System.Windows.Forms.Button
 End Class

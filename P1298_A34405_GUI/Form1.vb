@@ -42,6 +42,9 @@ Public Class FormOverCurrentTest
     Public Const CMD_DO_POSITION_AUTO_ZERO As Byte = &H70
     Public Const CMD_AFC_NOT_PULSING_GO_HOME As Byte = &H72
     Public Const CMD_DATA_LOGGING As Byte = &H56
+    Public Const CMD_MK_SET_SPEED As Byte = &H80
+    Public ConstCMD_MK_SET_MOTOR_DAMP As Byte = &H81
+
 
 
 
@@ -941,5 +944,49 @@ Public Class FormOverCurrentTest
 
     Private Sub ButtonCoolDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonCoolDown.Click
         SendAndValidateCommand(CMD_AFC_NOT_PULSING_GO_HOME, 0, 0, 0)
+    End Sub
+
+    Private Sub ButtonSetSpeed_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSetSpeed.Click
+        Dim Dan1 As Double
+        Dim ProgramWord As UInt16
+        Dim ProgramHB As Byte
+        Dim ProgramLB As Byte
+
+        Try
+            Dan1 = Int(TextBoxSetSpeed.Text)
+            Dan1 = 29100000 / 256 / Dan1
+            If Dan1 > &HFFFF Then
+                Dan1 = &HFFFF
+            End If
+            ProgramWord = Dan1
+            ProgramHB = Int(ProgramWord / 256)
+            ProgramLB = ProgramWord Mod 256
+        Catch ex As Exception
+            MsgBox("Data not Valid")
+        End Try
+
+        If SendAndValidateCommand(CMD_MK_SET_SPEED, 0, ProgramHB, ProgramLB) = True Then
+        Else
+            MsgBox("Unable to Set Speed")
+        End If
+    End Sub
+
+    Private Sub ButtonSetDamping_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSetDamping.Click
+        Dim ProgramWord As UInt16
+        Dim ProgramHB As Byte
+        Dim ProgramLB As Byte
+
+        Try
+            ProgramWord = Int(TextBoxSetDamping.Text)
+            ProgramHB = Int(ProgramWord / 256)
+            ProgramLB = ProgramWord Mod 256
+        Catch ex As Exception
+            MsgBox("Data not Valid")
+        End Try
+
+        If SendAndValidateCommand(ConstCMD_MK_SET_MOTOR_DAMP, 0, ProgramHB, ProgramLB) = True Then
+        Else
+            MsgBox("Unable to Set Motor Damping")
+        End If
     End Sub
 End Class
