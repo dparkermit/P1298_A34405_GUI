@@ -1,6 +1,7 @@
 ﻿'Imports System
 'Imports System.IO
 'Imports System.Collections
+Imports System.Math
 
 Public Class FormOverCurrentTest
     Dim autostep As UInt16
@@ -363,7 +364,9 @@ Public Class FormOverCurrentTest
 
         ' Read PARAMETER INPUT
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ADC_PARAMETER_INPUT, 0, 0) = True Then
-            LabelParameter.Text = ReturnData
+            datadouble = ReturnData
+            datadouble = ReturnData * 5 / 2 ^ 16
+            LabelParameter.Text = Round(datadouble, 2)
         Else
             LabelParameter.Text = "error"
             Exit Sub
@@ -371,7 +374,9 @@ Public Class FormOverCurrentTest
 
         ' Read Analog INPUT
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ANALOG_INPUT, 0, 0) = True Then
-            LabelAnalogInput.Text = ReturnData
+            datadouble = ReturnData
+            datadouble = ReturnData * 5 / 2 ^ 16
+            LabelAnalogInput.Text = Round(datadouble, 2)
         Else
             LabelAnalogInput.Text = "error"
             Exit Sub
@@ -381,7 +386,7 @@ Public Class FormOverCurrentTest
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_ANALOG_OUTPUT, 0, 0) = True Then
             datadouble = ReturnData
             datadouble = datadouble * 5 / 2 ^ 12
-            LabelAnalogOutput.Text = datadouble
+            LabelAnalogOutput.Text = Round(datadouble, 2)
         Else
             LabelAnalogOutput.Text = "error"
             Exit Sub
