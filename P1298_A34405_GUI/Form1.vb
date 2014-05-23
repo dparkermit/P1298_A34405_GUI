@@ -994,4 +994,76 @@ Public Class FormOverCurrentTest
             MsgBox("Unable to Set Motor Damping")
         End If
     End Sub
+
+    Private Sub ButtonStartRandomTest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonStartRandomTest.Click
+        Timer2.Enabled = False
+        Timer3.Enabled = True
+        Timer3.Interval = 1000
+    End Sub
+
+    Private Sub Timer3_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer3.Tick
+        Dim ProgramWord As UInt16
+        Dim ProgramHB As Byte
+        Dim ProgramLB As Byte
+
+        Dim rnd_speed As Single
+        Dim rnd_time As Single
+        Dim rnd_position As Single
+
+
+
+        rnd_speed = 99 * Rnd() + 1
+        rnd_time = 10 * 1000
+        rnd_position = 100 + 800 * Rnd()
+
+        Timer3.Interval = rnd_time
+
+
+
+
+        Try
+            ProgramWord = Int(rnd_speed)
+            TextBoxSetSpeed.Text = ProgramWord
+            ProgramWord = 29100000 / 256 / ProgramWord
+  
+
+        Catch ex As Exception
+            MsgBox("Data not Valid")
+        End Try
+        If ProgramWord > &HFFFF Then
+            ProgramWord = &HFFFF
+        End If
+        If ProgramWord < 1136 Then
+            ProgramWord = 1136
+        End If
+
+        ProgramHB = Int(ProgramWord / 256)
+        ProgramLB = ProgramWord Mod 256
+        If SendAndValidateCommand(CMD_MK_SET_SPEED, 0, ProgramHB, ProgramLB) = True Then
+        Else
+            MsgBox("Unable to Set Speed")
+        End If
+
+
+        Try
+            ProgramWord = Int(rnd_position)
+            ProgramHB = Int(ProgramWord / 256)
+            ProgramLB = ProgramWord Mod 256
+            TextBoxPosition.Text = ProgramWord
+        Catch ex As Exception
+            MsgBox("Data not Valid")
+        End Try
+
+        If SendAndValidateCommand(CMD_SET_TARGET_POSITION, 0, ProgramHB, ProgramLB) = True Then
+        Else
+            MsgBox("Unable to Set Position")
+        End If
+        ReadAllFromRam()
+    End Sub
+
+    Private Sub ButtonStopRandomTest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonStopRandomTest.Click
+        Timer3.Enabled = False
+        Timer2.Enabled = True
+        Timer3.Interval = 1000
+    End Sub
 End Class

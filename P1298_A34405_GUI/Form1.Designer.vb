@@ -117,6 +117,9 @@ Partial Class FormOverCurrentTest
         Me.ButtonSetDamping = New System.Windows.Forms.Button()
         Me.TextBoxSetSpeed = New System.Windows.Forms.TextBox()
         Me.ButtonSetSpeed = New System.Windows.Forms.Button()
+        Me.ButtonStartRandomTest = New System.Windows.Forms.Button()
+        Me.ButtonStopRandomTest = New System.Windows.Forms.Button()
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'ButtonSetBaudRate
@@ -951,11 +954,34 @@ Partial Class FormOverCurrentTest
         Me.ButtonSetSpeed.Text = "Set Speed"
         Me.ButtonSetSpeed.UseVisualStyleBackColor = True
         '
+        'ButtonStartRandomTest
+        '
+        Me.ButtonStartRandomTest.Location = New System.Drawing.Point(468, 399)
+        Me.ButtonStartRandomTest.Name = "ButtonStartRandomTest"
+        Me.ButtonStartRandomTest.Size = New System.Drawing.Size(114, 23)
+        Me.ButtonStartRandomTest.TabIndex = 957
+        Me.ButtonStartRandomTest.Text = "Start MK Test"
+        Me.ButtonStartRandomTest.UseVisualStyleBackColor = True
+        '
+        'ButtonStopRandomTest
+        '
+        Me.ButtonStopRandomTest.Location = New System.Drawing.Point(468, 427)
+        Me.ButtonStopRandomTest.Name = "ButtonStopRandomTest"
+        Me.ButtonStopRandomTest.Size = New System.Drawing.Size(114, 23)
+        Me.ButtonStopRandomTest.TabIndex = 958
+        Me.ButtonStopRandomTest.Text = "Stop MK Test"
+        Me.ButtonStopRandomTest.UseVisualStyleBackColor = True
+        '
+        'Timer3
+        '
+        '
         'FormOverCurrentTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 530)
+        Me.Controls.Add(Me.ButtonStopRandomTest)
+        Me.Controls.Add(Me.ButtonStartRandomTest)
         Me.Controls.Add(Me.TextBoxSetDamping)
         Me.Controls.Add(Me.ButtonSetDamping)
         Me.Controls.Add(Me.TextBoxSetSpeed)
@@ -1147,4 +1173,7 @@ Partial Class FormOverCurrentTest
     Friend WithEvents ButtonSetDamping As System.Windows.Forms.Button
     Friend WithEvents TextBoxSetSpeed As System.Windows.Forms.TextBox
     Friend WithEvents ButtonSetSpeed As System.Windows.Forms.Button
+    Friend WithEvents ButtonStartRandomTest As System.Windows.Forms.Button
+    Friend WithEvents ButtonStopRandomTest As System.Windows.Forms.Button
+    Friend WithEvents Timer3 As System.Windows.Forms.Timer
 End Class
