@@ -291,7 +291,8 @@ Public Class FormOverCurrentTest
 
         ' Read Current Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_CURRENT_POSITION, 0, 0) = True Then
-            LabelPosition.Text = ReturnData
+            datadouble = ReturnData
+            LabelPosition.Text = datadouble / 4
         Else
             LabelPosition.Text = "error"
             Exit Sub
@@ -300,7 +301,8 @@ Public Class FormOverCurrentTest
 
         ' Read Target Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_TARGET_POSITION, 0, 0) = True Then
-            LabelTarget.Text = ReturnData
+            datadouble = ReturnData
+            LabelTarget.Text = datadouble / 4
         Else
             LabelTarget.Text = "error"
             Exit Sub
@@ -308,7 +310,8 @@ Public Class FormOverCurrentTest
 
         ' Read Home Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_HOME_POSITION, 0, 0) = True Then
-            LabelHome.Text = ReturnData
+            datadouble = ReturnData
+            LabelHome.Text = datadouble / 4
         Else
             LabelHome.Text = "error"
             Exit Sub
@@ -316,7 +319,8 @@ Public Class FormOverCurrentTest
 
         ' Read Max Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_MAX_POSITION, 0, 0) = True Then
-            LabelMax.Text = ReturnData
+            datadouble = ReturnData
+            LabelMax.Text = datadouble / 4
         Else
             LabelMax.Text = "error"
             Exit Sub
@@ -324,7 +328,8 @@ Public Class FormOverCurrentTest
 
         ' Read Min Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_MIN_POSITION, 0, 0) = True Then
-            LabelMin.Text = ReturnData
+            datadouble = ReturnData
+            LabelMin.Text = datadouble / 4
         Else
             LabelMin.Text = "error"
             Exit Sub
@@ -524,12 +529,14 @@ Public Class FormOverCurrentTest
     End Sub
 
     Private Sub ButtonSetPosition_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSetPosition.Click
+        Dim DataDouble As Double
         Dim ProgramWord As UInt16
         Dim ProgramHB As Byte
         Dim ProgramLB As Byte
 
         Try
-            ProgramWord = Int(TextBoxPosition.Text)
+            DataDouble = TextBoxPosition.Text * 4
+            ProgramWord = Int(DataDouble)
             ProgramHB = Int(ProgramWord / 256)
             ProgramLB = ProgramWord Mod 256
         Catch ex As Exception
@@ -609,6 +616,7 @@ Public Class FormOverCurrentTest
     End Sub
 
     Private Sub LogDataFast()
+        Dim datadouble As Double
         Dim data_byte As Byte
         Dim position_word As UInt16
         Dim target_word As UInt16
@@ -627,12 +635,14 @@ Public Class FormOverCurrentTest
                         position_word = SerialPortETM.ReadByte
                         position_word = position_word * 256
                         position_word = position_word + SerialPortETM.ReadByte
-                        LabelPosition.Text = position_word
+                        datadouble = position_word / 4
+                        LabelPosition.Text = datadouble
 
                         target_word = SerialPortETM.ReadByte
                         target_word = target_word * 256
                         target_word = target_word + SerialPortETM.ReadByte
-                        LabelTarget.Text = target_word
+                        datadouble = target_word / 4
+                        LabelTarget.Text = datadouble
 
                         sigma_byte = SerialPortETM.ReadByte
                         LabelSigma.Text = sigma_byte
@@ -896,12 +906,14 @@ Public Class FormOverCurrentTest
     End Sub
 
     Private Sub ButtonSetHomePosition_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ButtonSetHomePosition.Click
+        Dim datadouble As Double
         Dim ProgramWord As UInt16
         Dim ProgramHB As Byte
         Dim ProgramLB As Byte
 
         Try
-            ProgramWord = Int(TextBoxSetHomePosition.Text)
+            datadouble = TextBoxSetHomePosition.Text * 4
+            ProgramWord = Int(datadouble)
             ProgramHB = Int(ProgramWord / 256)
             ProgramLB = ProgramWord Mod 256
         Catch ex As Exception
@@ -1066,4 +1078,5 @@ Public Class FormOverCurrentTest
         Timer2.Enabled = True
         Timer3.Interval = 1000
     End Sub
+
 End Class

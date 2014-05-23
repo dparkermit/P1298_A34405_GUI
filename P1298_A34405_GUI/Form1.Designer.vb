@@ -791,6 +791,7 @@ Partial Class FormOverCurrentTest
         Me.Button1.TabIndex = 938
         Me.Button1.Text = "Over Current Test"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'ButtonReadRamAddress
         '
@@ -927,6 +928,7 @@ Partial Class FormOverCurrentTest
         Me.TextBoxSetDamping.Size = New System.Drawing.Size(114, 20)
         Me.TextBoxSetDamping.TabIndex = 956
         Me.TextBoxSetDamping.Text = "6"
+        Me.TextBoxSetDamping.Visible = False
         '
         'ButtonSetDamping
         '
@@ -936,6 +938,7 @@ Partial Class FormOverCurrentTest
         Me.ButtonSetDamping.TabIndex = 955
         Me.ButtonSetDamping.Text = "Set Motor Damping"
         Me.ButtonSetDamping.UseVisualStyleBackColor = True
+        Me.ButtonSetDamping.Visible = False
         '
         'TextBoxSetSpeed
         '
@@ -944,6 +947,7 @@ Partial Class FormOverCurrentTest
         Me.TextBoxSetSpeed.Size = New System.Drawing.Size(114, 20)
         Me.TextBoxSetSpeed.TabIndex = 954
         Me.TextBoxSetSpeed.Text = "100"
+        Me.TextBoxSetSpeed.Visible = False
         '
         'ButtonSetSpeed
         '
@@ -953,6 +957,7 @@ Partial Class FormOverCurrentTest
         Me.ButtonSetSpeed.TabIndex = 953
         Me.ButtonSetSpeed.Text = "Set Speed"
         Me.ButtonSetSpeed.UseVisualStyleBackColor = True
+        Me.ButtonSetSpeed.Visible = False
         '
         'ButtonStartRandomTest
         '
@@ -962,6 +967,7 @@ Partial Class FormOverCurrentTest
         Me.ButtonStartRandomTest.TabIndex = 957
         Me.ButtonStartRandomTest.Text = "Start MK Test"
         Me.ButtonStartRandomTest.UseVisualStyleBackColor = True
+        Me.ButtonStartRandomTest.Visible = False
         '
         'ButtonStopRandomTest
         '
@@ -971,6 +977,7 @@ Partial Class FormOverCurrentTest
         Me.ButtonStopRandomTest.TabIndex = 958
         Me.ButtonStopRandomTest.Text = "Stop MK Test"
         Me.ButtonStopRandomTest.UseVisualStyleBackColor = True
+        Me.ButtonStopRandomTest.Visible = False
         '
         'Timer3
         '
