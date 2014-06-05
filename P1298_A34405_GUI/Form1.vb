@@ -88,6 +88,12 @@ Public Class FormOverCurrentTest
         TextBoxBaudRate.Text = My.Settings.SelectedBaudRate
 
         Try
+            ComboBoxMicroStepRatio.SelectedText = My.Settings.MicroStepRatio
+        Catch ex As Exception
+
+        End Try
+
+        Try
             ComboBoxComPorts.SelectedText = My.Settings.SelectedComPortString
         Catch ex As Exception
             MsgBox("Please select a Valid Com Port")
@@ -292,7 +298,7 @@ Public Class FormOverCurrentTest
         ' Read Current Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_CURRENT_POSITION, 0, 0) = True Then
             datadouble = ReturnData
-            LabelPosition.Text = datadouble / 4
+            LabelPosition.Text = datadouble / My.Settings.MicroStepRatio
         Else
             LabelPosition.Text = "error"
             Exit Sub
@@ -302,7 +308,7 @@ Public Class FormOverCurrentTest
         ' Read Target Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_TARGET_POSITION, 0, 0) = True Then
             datadouble = ReturnData
-            LabelTarget.Text = datadouble / 4
+            LabelTarget.Text = datadouble / My.Settings.MicroStepRatio
         Else
             LabelTarget.Text = "error"
             Exit Sub
@@ -311,7 +317,7 @@ Public Class FormOverCurrentTest
         ' Read Home Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_HOME_POSITION, 0, 0) = True Then
             datadouble = ReturnData
-            LabelHome.Text = datadouble / 4
+            LabelHome.Text = datadouble / My.Settings.MicroStepRatio
         Else
             LabelHome.Text = "error"
             Exit Sub
@@ -320,7 +326,7 @@ Public Class FormOverCurrentTest
         ' Read Max Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_MAX_POSITION, 0, 0) = True Then
             datadouble = ReturnData
-            LabelMax.Text = datadouble / 4
+            LabelMax.Text = datadouble / My.Settings.MicroStepRatio
         Else
             LabelMax.Text = "error"
             Exit Sub
@@ -329,7 +335,7 @@ Public Class FormOverCurrentTest
         ' Read Min Position
         If SendAndValidateCommand(CMD_READ_RAM_VALUE, RAM_READ_MIN_POSITION, 0, 0) = True Then
             datadouble = ReturnData
-            LabelMin.Text = datadouble / 4
+            LabelMin.Text = datadouble / My.Settings.MicroStepRatio
         Else
             LabelMin.Text = "error"
             Exit Sub
@@ -535,7 +541,7 @@ Public Class FormOverCurrentTest
         Dim ProgramLB As Byte
 
         Try
-            DataDouble = TextBoxPosition.Text * 4
+            DataDouble = TextBoxPosition.Text * My.Settings.MicroStepRatio
             ProgramWord = Int(DataDouble)
             ProgramHB = Int(ProgramWord / 256)
             ProgramLB = ProgramWord Mod 256
@@ -635,13 +641,13 @@ Public Class FormOverCurrentTest
                         position_word = SerialPortETM.ReadByte
                         position_word = position_word * 256
                         position_word = position_word + SerialPortETM.ReadByte
-                        datadouble = position_word / 4
+                        datadouble = position_word / My.Settings.MicroStepRatio
                         LabelPosition.Text = datadouble
 
                         target_word = SerialPortETM.ReadByte
                         target_word = target_word * 256
                         target_word = target_word + SerialPortETM.ReadByte
-                        datadouble = target_word / 4
+                        datadouble = target_word / My.Settings.MicroStepRatio
                         LabelTarget.Text = datadouble
 
                         sigma_byte = SerialPortETM.ReadByte
@@ -912,7 +918,7 @@ Public Class FormOverCurrentTest
         Dim ProgramLB As Byte
 
         Try
-            datadouble = TextBoxSetHomePosition.Text * 4
+            datadouble = TextBoxSetHomePosition.Text * My.Settings.MicroStepRatio
             ProgramWord = Int(datadouble)
             ProgramHB = Int(ProgramWord / 256)
             ProgramLB = ProgramWord Mod 256
@@ -1079,4 +1085,7 @@ Public Class FormOverCurrentTest
         Timer3.Interval = 1000
     End Sub
 
+    Private Sub ComboBoxMicroStepRatio_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBoxMicroStepRatio.SelectedIndexChanged
+        My.Settings.MicroStepRatio = ComboBoxMicroStepRatio.SelectedItem.ToString
+    End Sub
 End Class

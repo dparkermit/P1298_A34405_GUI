@@ -120,6 +120,8 @@ Partial Class FormOverCurrentTest
         Me.ButtonStartRandomTest = New System.Windows.Forms.Button()
         Me.ButtonStopRandomTest = New System.Windows.Forms.Button()
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
+        Me.ComboBoxMicroStepRatio = New System.Windows.Forms.ComboBox()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'ButtonSetBaudRate
@@ -982,11 +984,32 @@ Partial Class FormOverCurrentTest
         'Timer3
         '
         '
+        'ComboBoxMicroStepRatio
+        '
+        Me.ComboBoxMicroStepRatio.FormattingEnabled = True
+        Me.ComboBoxMicroStepRatio.Items.AddRange(New Object() {"1", "2", "4"})
+        Me.ComboBoxMicroStepRatio.Location = New System.Drawing.Point(478, 499)
+        Me.ComboBoxMicroStepRatio.Name = "ComboBoxMicroStepRatio"
+        Me.ComboBoxMicroStepRatio.Size = New System.Drawing.Size(114, 21)
+        Me.ComboBoxMicroStepRatio.TabIndex = 959
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(475, 483)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(162, 13)
+        Me.Label21.TabIndex = 960
+        Me.Label21.Text = "MicroStep Ratio for Display"
+        '
         'FormOverCurrentTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(820, 530)
+        Me.Controls.Add(Me.Label21)
+        Me.Controls.Add(Me.ComboBoxMicroStepRatio)
         Me.Controls.Add(Me.ButtonStopRandomTest)
         Me.Controls.Add(Me.ButtonStartRandomTest)
         Me.Controls.Add(Me.TextBoxSetDamping)
@@ -1183,4 +1206,6 @@ Partial Class FormOverCurrentTest
     Friend WithEvents ButtonStartRandomTest As System.Windows.Forms.Button
     Friend WithEvents ButtonStopRandomTest As System.Windows.Forms.Button
     Friend WithEvents Timer3 As System.Windows.Forms.Timer
+    Friend WithEvents ComboBoxMicroStepRatio As System.Windows.Forms.ComboBox
+    Friend WithEvents Label21 As System.Windows.Forms.Label
 End Class
